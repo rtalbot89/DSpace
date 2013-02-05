@@ -58,10 +58,11 @@ select.multiple {
 
 #ds-header-logo {
     float:left;
-    width: 48px;
-    height: 50px;
-    margin-top: 10px;
-    background: url('../../images/dspace-logo-only.png');
+    width: 136px;
+    height: 26px;
+    margin-top: 35px;
+    /*background: url('../../images/dspace-logo-only.png');*/
+     background: url('../../images/logo.png');
     background-repeat: no-repeat;
     background-color: transparent;
     margin-right: 15px;

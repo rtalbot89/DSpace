@@ -38,6 +38,9 @@ import org.dspace.content.authority.Choices;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.submit.AbstractProcessingStep;
+import uk.ac.jorum.dspace.utils.BundleUtils;
+//import uk.ac.jorum.dspace.utils.StringUtils;
+
 
 /**
  * Describe step for DSpace submission process. Handles the gathering of

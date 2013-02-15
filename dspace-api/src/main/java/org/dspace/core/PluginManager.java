@@ -157,6 +157,31 @@ public class PluginManager
     // cache of config data for Sequence Plugins; format its
     // <interface-name> -> [ <classname>.. ]  (value is Array)
     private static Map<String, String[]> sequenceConfig = new HashMap<String, String[]>();
+    
+    // GWaller 11/11/09 Added method to pull out sequence classes but don't create any instances
+    public static String[] getPluginSequenceClasses(Class intfc)
+	{
+	    // cache the configuration for this interface after grovelling it once:
+	    // format is  prefix.<interface> = <classname>
+	    String iname = intfc.getName();
+	    String classname[] = null;
+	    if (!sequenceConfig.containsKey(iname))
+	    {
+	        String val = ConfigurationManager.getProperty(SEQUENCE_PREFIX+iname);
+	        if (val == null)
+	        {
+	            log.warn("No Configuration entry found for Sequence Plugin interface="+iname);
+	            return new String[0];
+	        }
+	        classname = val.trim().split("\\s*,\\s*");
+	        sequenceConfig.put(iname, classname);
+	    }
+	    else
+	        classname = (String[])sequenceConfig.get(iname);
+	
+	   
+	    return classname;
+	}
 
     /**
      * Returns instances of all plugins that implement the interface

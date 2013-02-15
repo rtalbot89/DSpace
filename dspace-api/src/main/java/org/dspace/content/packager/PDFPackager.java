@@ -38,6 +38,8 @@ import org.dspace.core.Context;
 import org.dspace.core.LogManager;
 import org.dspace.core.SelfNamedPlugin;
 import org.dspace.core.Utils;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
 
 /**
  * Accept a PDF file by itself as a SIP.
@@ -409,6 +411,21 @@ public class PDFPackager
     public String getParameterHelp()
     {
         return "No additional options available.";
+    }
+
+    @Override
+    public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean updateLicenceInfoInManifest(Context context, Item item, Bitstream bitstreamContainingManifest, InputStream manifestStream, boolean backupBitstream, String licenceUrl, String licenceName) throws SQLException, IOException, AuthorizeException, MetadataValidationException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

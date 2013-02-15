@@ -62,6 +62,73 @@ public class Constants
      */
     public static final String DEFAULT_BUNDLE_NAME = "ORIGINAL";
 
+    // GWaller 23/09/09 Added String for content bundle to store archived packages
+    /**
+     * Bundle name for archived content packages i.e. the zip which the user uploaded
+     */
+    public static final String ARCHIVED_CONTENT_PACKAGE_BUNDLE = "ARCHIVED_CP";
+    
+    /**
+     * Bundle name for archived content packages i.e. the zip which the user uploaded
+     */
+    public static final String BACKUP_CONTENT_PACKAGE_BUNDLE = "BACKUP_CP";
+    
+    // GWaller 23/09/09 Added String for content bundle to store related packages
+    /**
+     * Bundle name for related content packages i.e. user uploadd multiple packages and the wrapper holds references to them via this bundle
+     */
+    public static final String RELATED_CONTENT_PACKAGE_BUNDLE = "RELATED_CP";
+    
+    // GWaller 25/09/09 Added constant for URL_BUNDLE i.e. web resources
+    /**
+     * Bundle name for URLs  i.e. web resources
+     */
+    public static final String URL_BUNDLE = "URL_BUNDLE";
+
+    // GWaller 27/1/11 IssueID #303 Added constant for thumbnail bundle
+    /**
+     * Bundle name for URLs  i.e. web resources
+     */
+    public static final String THUMBNAIL_BUNDLE = "THUMBNAIL";
+    
+    // GWaller 17/11/09 Added support for feed urls
+    public static final String FEED_BUNDLE = "FEED_BUNDLE";
+    public static final String FEED_BUNDLE_URL_BITSTREAM_NAME = "feed_url";
+    public static final String FEED_BUNDLE_DEF_COL_HANDLE_NAME = "def_col_handle";
+    public static final String FEED_BUNDLE_FORCE_COL_HANDLE_NAME = "force_col_handle";
+    public static final String FEED_BUNDLE_CONTENTS_NAME = "feed_contents";
+    
+    
+    // GWaller 11/11/09 Added constants for pacakge preview bundle and bitstream
+    public static final String PREVIEW_PACKAGE_BUNDLE = "PREVIEW_CP";
+    public static final String PREVIEW_PACKAGE_BITSTREAM = "PreviewIndexBitstream";
+    public static final String PREVIEW_LEFT_FRAME_BITSTREAM = "PreviewOrgBitstream";
+    public static final String PREVIEW_RIGHT_FRAME_BITSTREAM = "PreviewDefPageBitstream";
+    
+    
+    //Added By CG - constants for adding cc licence to metadata 
+    public static final String DC_SCHEMA = "dc";
+    public static final String DC_RIGHTS = "rights";
+    public static final String DC_RIGHTS_URI = "uri";
+    // Metadata format label used by IMS disseminator
+	public static final String METADATA_FORMAT_LABEL = "metadataFormat";
+    
+	// Only supporting DC and QDC metadata in disseminated packages for the time being
+	// (Had to move from dspace-jorum as it was causing cyclical maven build problems if 
+	// calling from core dspace api)
+	public static enum SupportedDisseminationMetadataFormats {
+		DC, QDC;
+		public static String getMetadataFormat(String mdFormat) {
+			String format = "";
+			try {
+				format = SupportedDisseminationMetadataFormats.valueOf(mdFormat).toString();
+			} catch (Exception e) {
+				return DC.toString();
+			}
+			return format;
+		}
+	}
+	
     /**
      * Name of bundle for user-visible "content" (same as default for now).
      */

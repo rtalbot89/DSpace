@@ -97,6 +97,7 @@ public abstract class AbstractPackageIngester
      * @throws UnsupportedOperationException if this packager does not
      *  implement <code>ingestAll</code>
      */
+    
     @Override
     public List<DSpaceObject> ingestAll(Context context, DSpaceObject parent, File pkgFile,
                                 PackageParameters params, String license)
@@ -119,6 +120,8 @@ public abstract class AbstractPackageIngester
             //actually ingest pkg using provided PackageIngester
             dso = ingest(context, parent, pkgFile, params, license);
         }
+        
+        
         catch(IllegalStateException ie)
         {
             // NOTE: if we encounter an IllegalStateException, this means the

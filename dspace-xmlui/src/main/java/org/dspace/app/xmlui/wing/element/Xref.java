@@ -54,7 +54,7 @@ public class Xref extends TextContainer implements StructuralElement
      *            (May be null) a local identifier used to differentiate the
      *            element from its siblings.
      */
-    public Xref(WingContext context, String target, String rend, String name) throws WingException
+    protected Xref(WingContext context, String target, String rend, String name) throws WingException
     {
         super(context);
         
@@ -90,7 +90,7 @@ public class Xref extends TextContainer implements StructuralElement
      * @param rend
      *            (May be null) A special rendering instruction for this xref.
      */
-    public Xref(WingContext context, String target, String rend) throws WingException
+    protected Xref(WingContext context, String target, String rend) throws WingException
     {
         this(context, target, rend, null);
     }
@@ -104,7 +104,7 @@ public class Xref extends TextContainer implements StructuralElement
      *            (Required) A target URL for the references a destination for
      *            the xref.
      */
-    public Xref(WingContext context, String target) throws WingException
+    protected Xref(WingContext context, String target) throws WingException
     {
     	this(context, target, null, null);
     }

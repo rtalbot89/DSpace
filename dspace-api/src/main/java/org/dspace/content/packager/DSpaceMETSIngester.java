@@ -22,8 +22,13 @@ import org.dspace.core.Context;
 import org.dspace.core.Constants;
 import org.dspace.core.PluginManager;
 import org.dspace.app.mediafilter.MediaFilter;
+import org.dspace.content.WorkspaceItem;
 
 import org.jdom.Element;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
+import uk.ac.jorum.licence.LicenceController;
+
 
 /**
  * Packager plugin to ingest a
@@ -279,5 +284,25 @@ public class DSpaceMETSIngester
                 "\n\n" +
                 "* dmd=[dmdSecType]      " +
                    "Type of the METS <dmdSec> which should be used for primary item metadata (defaults to MODS, then DC)";
+    }
+
+    @Override
+    public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean updateLicenceInfoInManifest(Context context, Item item, Bitstream bitstreamContainingManifest, InputStream manifestStream, boolean backupBitstream, String licenceUrl, String licenceName) throws SQLException, IOException, AuthorizeException, MetadataValidationException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

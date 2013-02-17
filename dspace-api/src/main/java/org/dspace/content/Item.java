@@ -45,6 +45,11 @@ import org.dspace.storage.rdbms.TableRow;
 import org.dspace.storage.rdbms.TableRowIterator;
 import org.dspace.utils.DSpace;
 import org.dspace.versioning.VersioningService;
+import org.dspace.content.packager.PackageIngester;
+import org.dspace.content.packager.PackageUtils;
+
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
 
 /**
  * Class representing an item in DSpace.
@@ -2842,5 +2847,31 @@ public class Item extends DSpaceObject
 
             return null;
         }
+    }
+    
+     // START GWaller 9/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
+    public void postInstallHook(Context c) throws SQLException, AuthorizeException, NonCriticalException, CriticalException{
+    	if (this.getBundles(Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE).length > 0){
+    		// We have a content package
+    		PackageIngester ingester = PackageUtils.getPackageIngester(this);
+    		// Now test for null and then call hook
+    		if (ingester != null){
+    			//try{
+    				ingester.postInstallHook(c, this);
+    			//} catch (NonCriticalException e){
+    				// Exception was non-critical, don't need to do anything but we must continue and update the item
+    			//}
+    			
+    			// GWaller 29/1/10 IssueID #170 must update the item after calling postInstallHook on ingester 
+    			//                              - new bitstreams may need resequenced
+    			this.update();
+    		}
+    	}    	
+    }
+    // END GWaller 9/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
+    
+    // GWaller 19/11/09 Getter for the context stored in this item
+    public Context getContext(){
+    	return this.ourContext;
     }
 }

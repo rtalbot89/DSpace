@@ -52,15 +52,15 @@ public class ReviewStep extends AbstractSubmissionStep
 	/** Language Strings **/
     protected static final Message T_head = 
         message("xmlui.Submission.submit.ReviewStep.head");
-    protected static final Message T_yes = 
+    public static final Message T_yes = 
         message("xmlui.Submission.submit.ReviewStep.yes");
-    protected static final Message T_no = 
+    public static final Message T_no = 
         message("xmlui.Submission.submit.ReviewStep.no");
     protected static final Message T_submit_jump = 
         message("xmlui.Submission.submit.ReviewStep.submit_jump");
     protected static final Message T_no_metadata = 
         message("xmlui.Submission.submit.ReviewStep.no_metadata");
-    protected static final Message T_unknown = 
+    public static final Message T_unknown = 
         message("xmlui.Submission.submit.ReviewStep.unknown");
     protected static final Message T_known = 
         message("xmlui.Submission.submit.ReviewStep.known");

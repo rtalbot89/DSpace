@@ -152,8 +152,8 @@ public class PackageDetectorStep extends AbstractProcessingStep {
 		
 		// GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
 		Bundle archivedBundle = null;
-        for (Iterator<Class<? extends uk.ac.jorum.packager.detector.PackageDetector>> it = PackageUtils.getDetectorClasses().iterator(); it.hasNext();) {
-            Class<? extends                                                             uk.ac.jorum.packager.detector.PackageDetector> detector = it.next();
+        for (Iterator<Class<? extends PackageDetector>> it = PackageUtils.getDetectorClasses().iterator(); it.hasNext();) {
+            Class<? extends                                                             uk.ac.jorum.packager.detector.PackageDetector> detector = (Class<? extends                                                             uk.ac.jorum.packager.detector.PackageDetector>) it.next();
             try{
                     logger.debug("Checking for validPackage with detector: " + detector.getCanonicalName());
                     

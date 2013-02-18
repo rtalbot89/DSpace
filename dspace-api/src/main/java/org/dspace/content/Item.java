@@ -7,6 +7,7 @@
  */
 package org.dspace.content;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -1487,6 +1488,38 @@ public class Item extends DSpaceObject
         }
     }
 
+      /**
+     * Store a copy of the license a user granted in this item.
+     * 
+     * @param license
+     *            the license the user granted
+     * @param eperson
+     *            the eperson who granted the license
+     * @throws SQLException
+     * @throws IOException
+     * @throws AuthorizeException
+     */
+    public void licenseGranted(String license, EPerson eperson)
+            throws SQLException, IOException, AuthorizeException
+    {
+
+        // Store text as a bitstream
+        byte[] licenseBytes = license.getBytes();
+        ByteArrayInputStream bais = new ByteArrayInputStream(licenseBytes);
+        Bitstream b = createSingleBitstream(bais, "LICENSE");
+
+        // Now set the format and name of the bitstream
+        b.setName("license.txt");
+        b.setSource("Written by org.dspace.content.Item");
+
+        // Find the License format        
+        BitstreamFormat bf = BitstreamFormat.findByShortDescription(ourContext,
+        "License");
+        b.setFormat(bf);
+
+        b.update();
+    }
+
     /**
      * Remove all licenses from an item - it was rejected
      *
@@ -1990,7 +2023,7 @@ public class Item extends DSpaceObject
      * @throws AuthorizeException
      * @throws IOException
      */
-    void delete() throws SQLException, AuthorizeException, IOException
+    public void delete() throws SQLException, AuthorizeException, IOException
     {
         // Check authorisation here. If we don't, it may happen that we remove the
         // metadata but when getting to the point of removing the bundles we get an exception

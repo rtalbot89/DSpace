@@ -93,11 +93,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-api</artifactId>
-        </dependency>
-
         <!-- Custom build DSpace cocoon -->
         <dependency>
             <groupId>jdom</groupId>
@@ -228,7 +223,21 @@
             <artifactId>servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>uk.ac.jorum</groupId>
+            <artifactId>jorum-utils</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dspace-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.jorum</groupId>
+            <artifactId>dspace-jorum</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

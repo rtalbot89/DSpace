@@ -152,117 +152,116 @@ public class PackageDetectorStep extends AbstractProcessingStep {
 		
 		// GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
 		Bundle archivedBundle = null;
-        for (Iterator<Class<? extends PackageDetector>> it = PackageUtils.getDetectorClasses().iterator(); it.hasNext();) {
-            Class<? extends                                                             uk.ac.jorum.packager.detector.PackageDetector> detector = (Class<? extends                                                             uk.ac.jorum.packager.detector.PackageDetector>) it.next();
-            try{
-                    logger.debug("Checking for validPackage with detector: " + detector.getCanonicalName());
-                    
-                    PackageDetector detectorInst = (PackageDetector) detector.newInstance();
-                    detectorInst.setBitstream(stream); // need to set the stream the detector should look at
-                    
-                    // Check to see if we have a package this detector supports
-                    if (detectorInst.isValidPackage()){
-                            // Found package - the ingester class is stored in this instance
-                            logger.debug("Detected valid package");
-                            
-                            Class<? extends PackageIngester> ingesterClass = detectorInst.ingesterClass();
-                            
-                            // Create an ingester instance and call ingest
-                            logger.debug("Instantiating ingester: " + ingesterClass.getCanonicalName());
-                            PackageIngester ingester = ingesterClass.newInstance();
-                            
-                            // Create the packager configuration
-                            PackageParameters params = createPackagerConfig();
-                            
-                            // TODO: Support multiple bitstreams and read collections from manifest!
-                            logger.debug("Calling ingest on " + ingester);
-                            WorkspaceItem ingestedPackage = ingester.ingest(context, collections, stream.retrieve(), params, null);
-                            
-                            // Add the bitstream to the list of processed streams so we don't expand the package twice if the users moves back and forth
-                            logger.debug("adding stream name " + stream.getName() + " to processed list");
-                            
-                            
-                            // Need to add item metadata from package - do this if its only 1 package ingested
-                            // If there are multiple streams we want the user to enter the metadata to this "package wrapper" object
-                            if ( copyMetadataToItem ){
-                                    /*
-                                     * Rather than deleting the original submission item in submissioninfo (i.e. the package zip), add new
-                                     * bitstreams containing the package data and metadata - this leaves the original zip there intact for
-                                     * archival purposes.
-                                     */
-                                    BundleUtils.copyBundlesAndResequence(ingestedPackage, item, null);
-                                    
-                                    DCValue[] dcValues = ingestedPackage.getItem().getDC(Item.ANY, Item.ANY, Item.ANY);
-                                    for (DCValue v : dcValues){
-                                            item.addMetadata(v.schema, v.element, v.qualifier, v.language, v.value);
-                                    }
-                            } else {
-                                    // Dealing with multiple content packages so don't copy anything to this 'wrapper'
-                            }
-                            
-                            /*
-                             *  Now we need to tidy up the ingested package WorkspaceItem - delete the wrapper and item otherwise it will appear in 
-                             *	unfinished submissions and also have unnecessary duplicate rows in the item table
-                             */
-                            if (copyMetadataToItem){ // Only delete if we have a single content package
-                                    ingestedPackage.deleteAll();
-                                    
-                                    // GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
-                                    if (createArchive){
-                                            archivedBundle = BundleUtils.getBundleByName(item, Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE);
-                                    }
-                                    
-                            } else {
-                                    // GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
-                                    if (createArchive){
-                                            archivedBundle = BundleUtils.getBundleByName(ingestedPackage.getItem(), Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE);
-                                    }
-                            }
+	// Cycle through all the supported package detectors and see if we have a valid match
+		for (Class<? extends PackageDetector> detector: PackageUtils.getDetectorClasses()){
+			try{
+				logger.debug("Checking for validPackage with detector: " + detector.getCanonicalName());
+				
+				PackageDetector detectorInst = detector.newInstance();
+				detectorInst.setBitstream(stream); // need to set the stream the detector should look at
+				
+				// Check to see if we have a package this detector supports
+				if (detectorInst.isValidPackage()){
+					// Found package - the ingester class is stored in this instance
+					logger.debug("Detected valid package");
+					
+					Class<? extends PackageIngester> ingesterClass = detectorInst.ingesterClass();
+					
+					// Create an ingester instance and call ingest
+					logger.debug("Instantiating ingester: " + ingesterClass.getCanonicalName());
+					PackageIngester ingester = ingesterClass.newInstance();
+					
+					// Create the packager configuration
+					PackageParameters params = createPackagerConfig();
+					
+					// TODO: Support multiple bitstreams and read collections from manifest!
+					logger.debug("Calling ingest on " + ingester);
+					WorkspaceItem ingestedPackage = ingester.ingest(context, collections, stream.retrieve(), params, null);
+					
+					// Add the bitstream to the list of processed streams so we don't expand the package twice if the users moves back and forth
+					logger.debug("adding stream name " + stream.getName() + " to processed list");
+					
+					
+					// Need to add item metadata from package - do this if its only 1 package ingested
+					// If there are multiple streams we want the user to enter the metadata to this "package wrapper" object
+					if ( copyMetadataToItem ){
+						/*
+						 * Rather than deleting the original submission item in submissioninfo (i.e. the package zip), add new
+						 * bitstreams containing the package data and metadata - this leaves the original zip there intact for
+						 * archival purposes.
+						 */
+						BundleUtils.copyBundlesAndResequence(ingestedPackage, item, null);
+						
+						DCValue[] dcValues = ingestedPackage.getItem().getDC(Item.ANY, Item.ANY, Item.ANY);
+						for (DCValue v : dcValues){
+							item.addMetadata(v.schema, v.element, v.qualifier, v.language, v.value);
+						}
+					} else {
+						// Dealing with multiple content packages so don't copy anything to this 'wrapper'
+					}
+					
+					/*
+					 *  Now we need to tidy up the ingested package WorkspaceItem - delete the wrapper and item otherwise it will appear in 
+					 *	unfinished submissions and also have unnecessary duplicate rows in the item table
+					 */
+					if (copyMetadataToItem){ // Only delete if we have a single content package
+						ingestedPackage.deleteAll();
+						
+						// GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
+						if (createArchive){
+							archivedBundle = BundleUtils.getBundleByName(item, Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE);
+						}
+						
+					} else {
+						// GWaller 9/1//09 IssueID #133 - archived content package should not be in wrapper
+						if (createArchive){
+							archivedBundle = BundleUtils.getBundleByName(ingestedPackage.getItem(), Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE);
+						}
+					}
 
-                            /* 
-                             * Now move the bitstream containing the original uploaded package into an archived bundle - means 
-                             * it won't get processed again if the user moves back and forth between the submission steps
-                             */
-                            
-                            // GWaller 9/1//09 IssueID #133 The archived bundle will be in this "item" instance if only a single content package was 
-                            //                              deposited. If however multiple packages were deposited, the "item" instance referes to the 
-                            //                              wrapper object - the archived bundle should not appear in this! It instead appears in the child
-                            //                              item installed above.
-                            if (createArchive){	
-                                    // GWaller 12/1/10 IssueID #161 Before adding the archive bitstream to the related item, reset the sequence number
-                                    //                              so that it will have a unique number when it is installed by installItem
-                                    stream.setSequenceID(-1); // if set to < 0, installItem will reassign the sequence num to a unique val on install
-                                    
-                                    archivedBundle.addBitstream(stream);
-                                    archivedBundle.update();
-                            }
-                            
-                            // GWaller 11/1/10 IssueID #157 Must archive the zip *before* calling install item so that the preview is created!
-                            if (! copyMetadataToItem){ // ie multiple packages submitted
-                                    // Install the ingested package - this assigns a handle
-                                    Item relatedItem = InstallItem.installItem(context, ingestedPackage);
-                                    
-                                    // Add the handle to the related bundle
-                                    Bundle b = BundleUtils.getBundleByName(item, Constants.RELATED_CONTENT_PACKAGE_BUNDLE);
-                                    BitstreamFormat bs_format = BitstreamFormat.findByShortDescription(context, "Text");
-                                    
-                                    BundleUtils.setBitstreamFromBytes(b, relatedItem.getHandle(), bs_format, relatedItem.getHandle().getBytes(), true);
-                            }
-                            
-                            bundleContainingStream.removeBitstream(stream);
-                            bundleContainingStream.update();
-                            
-                            // Break the for loop iterating across package detectors
-                            break;
-                    }
-            } catch (Exception e){
-                    ExceptionLogger.logException(logger, e);
-                    // Problem creating the detector instance - misconfiguration. Just assume it is a regular file and let it through
-            }
-        }
+					/* 
+					 * Now move the bitstream containing the original uploaded package into an archived bundle - means 
+					 * it won't get processed again if the user moves back and forth between the submission steps
+					 */
+					
+					// GWaller 9/1//09 IssueID #133 The archived bundle will be in this "item" instance if only a single content package was 
+					//                              deposited. If however multiple packages were deposited, the "item" instance referes to the 
+					//                              wrapper object - the archived bundle should not appear in this! It instead appears in the child
+					//                              item installed above.
+					if (createArchive){	
+						// GWaller 12/1/10 IssueID #161 Before adding the archive bitstream to the related item, reset the sequence number
+						//                              so that it will have a unique number when it is installed by installItem
+						stream.setSequenceID(-1); // if set to < 0, installItem will reassign the sequence num to a unique val on install
+						
+						archivedBundle.addBitstream(stream);
+						archivedBundle.update();
+					}
+					
+					// GWaller 11/1/10 IssueID #157 Must archive the zip *before* calling install item so that the preview is created!
+					if (! copyMetadataToItem){ // ie multiple packages submitted
+						// Install the ingested package - this assigns a handle
+						Item relatedItem = InstallItem.installItem(context, ingestedPackage);
+						
+						// Add the handle to the related bundle
+						Bundle b = BundleUtils.getBundleByName(item, Constants.RELATED_CONTENT_PACKAGE_BUNDLE);
+						BitstreamFormat bs_format = BitstreamFormat.findByShortDescription(context, "Text");
+						
+						BundleUtils.setBitstreamFromBytes(b, relatedItem.getHandle(), bs_format, relatedItem.getHandle().getBytes(), true);
+					}
+					
+					bundleContainingStream.removeBitstream(stream);
+					bundleContainingStream.update();
+					
+					// Break the for loop iterating across package detectors
+					break;
+				}
+			} catch (Exception e){
+				ExceptionLogger.logException(logger, e);
+				// Problem creating the detector instance - misconfiguration. Just assume it is a regular file and let it through
+			}
+		}
 		
 	}
-	
 	
 	 public int doProcessing(Context context,
 	            HttpServletRequest request, HttpServletResponse response,

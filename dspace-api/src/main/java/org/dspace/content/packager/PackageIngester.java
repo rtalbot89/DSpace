@@ -95,7 +95,15 @@ public interface PackageIngester
                          PackageParameters params, String license)
         throws PackageException, CrosswalkException,
                AuthorizeException, SQLException, IOException;
+    
+    
 
+    
+    // GWaller 26/08/09 Modified to support array of Collections
+    WorkspaceItem ingest(Context context, Collection[] collections, InputStream in,
+                         PackageParameters params, String license)
+        throws PackageException, CrosswalkException,
+               AuthorizeException, SQLException, IOException;
 
     /**
      * Recursively create one or more DSpace Objects out of the contents
@@ -259,5 +267,6 @@ public interface PackageIngester
     
     // END GWaller 02/02/09 IssueID #175 Added methods to deal with licence manipulation inside packages
 
-    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object);
+   // public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object);
+
 }

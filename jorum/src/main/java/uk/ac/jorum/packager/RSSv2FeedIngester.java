@@ -354,10 +354,7 @@ public class RSSv2FeedIngester extends BaseXmlIngester {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    
 
 	
 	

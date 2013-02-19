@@ -25,7 +25,6 @@ package uk.ac.jorum.submit.step;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -262,6 +261,7 @@ public class PackageDetectorStep extends AbstractProcessingStep {
 		}
 		
 	}
+	
 	
 	 public int doProcessing(Context context,
 	            HttpServletRequest request, HttpServletResponse response,

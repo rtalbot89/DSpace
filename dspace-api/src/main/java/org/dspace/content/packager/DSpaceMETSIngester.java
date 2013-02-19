@@ -301,8 +301,10 @@ public class DSpaceMETSIngester
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+  
+
     @Override
-    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
+    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream in, PackageParameters params, String license) throws PackageException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

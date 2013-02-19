@@ -50,13 +50,7 @@ import java.util.zip.ZipOutputStream;
 import org.apache.log4j.Logger;
 import org.dspace.app.itemexport.ItemExport;
 import org.dspace.authorize.AuthorizeException;
-import org.dspace.content.Bitstream;
-import org.dspace.content.BitstreamFormat;
-import org.dspace.content.Bundle;
-import org.dspace.content.Collection;
-import org.dspace.content.DSpaceObject;
-import org.dspace.content.FormatIdentifier;
-import org.dspace.content.WorkspaceItem;
+import org.dspace.content.*;
 import org.dspace.content.crosswalk.CrosswalkException;
 import org.dspace.content.crosswalk.CrosswalkObjectNotSupported;
 import org.dspace.content.crosswalk.IngestionCrosswalk;
@@ -69,7 +63,6 @@ import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.core.LogManager;
-import org.dspace.content.Item;
 import org.jdom.Element;
 
 import uk.ac.jorum.dspace.utils.BundleUtils;
@@ -271,6 +264,8 @@ public class IMSIngester extends BaseXmlIngester {
 	 *  
 	 * @see org.dspace.content.packager.PackageIngester#ingest(org.dspace.core.Context, org.dspace.content.Collection[], java.io.InputStream, org.dspace.content.packager.PackageParameters, java.lang.String)
 	 */
+        
+    @Override
 	public WorkspaceItem ingest(Context context, 
 							    Collection[] collections, 
 							    InputStream in, 
@@ -1095,35 +1090,29 @@ public class IMSIngester extends BaseXmlIngester {
 
 	// END GWaller 02/02/09 IssueID #175 Added methods to deal with licence manipulation inside packages
 
-    @Override
     public DSpaceObject ingest(Context context, DSpaceObject parent, File pkgFile, PackageParameters params, String license) throws PackageException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public List<DSpaceObject> ingestAll(Context context, DSpaceObject parent, File pkgFile, PackageParameters params, String license) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public DSpaceObject replace(Context context, DSpaceObject dso, File pkgFile, PackageParameters params) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public List<DSpaceObject> replaceAll(Context context, DSpaceObject dso, File pkgFile, PackageParameters params) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public String getParameterHelp() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
+}
 	
 	
 }

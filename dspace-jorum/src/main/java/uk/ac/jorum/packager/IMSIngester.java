@@ -264,8 +264,6 @@ public class IMSIngester extends BaseXmlIngester {
 	 *  
 	 * @see org.dspace.content.packager.PackageIngester#ingest(org.dspace.core.Context, org.dspace.content.Collection[], java.io.InputStream, org.dspace.content.packager.PackageParameters, java.lang.String)
 	 */
-        
-    @Override
 	public WorkspaceItem ingest(Context context, 
 							    Collection[] collections, 
 							    InputStream in, 
@@ -1112,7 +1110,7 @@ public class IMSIngester extends BaseXmlIngester {
 
     public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
         throw new UnsupportedOperationException("Not supported yet.");
-}
+    }
 	
 	
 }

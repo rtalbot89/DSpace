@@ -8,9 +8,9 @@
     <version>3.2-SNAPSHOT</version>
   </parent>
   <groupId>uk.ac.jorum</groupId>
-  <artifactId>jorum-utils</artifactId>
+  <artifactId>dspace-jorum</artifactId>
   <version>1.0</version>
-  <name>jorum-utils</name>
+  <name>dspace-jorum</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,20 +19,31 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.14</version>
-      <type>jar</type>
+      <groupId>org.dspace</groupId>
+      <artifactId>dspace-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom</artifactId>
-      <version>1.1.3</version>
-      <type>jar</type>
+      <groupId>eu.medsea.mimeutil</groupId>
+      <artifactId>mime-util</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>jorum-utils</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jetty</groupId>
+      <artifactId>javax.servlet</artifactId>
+      <version>5.1.12</version>
     </dependency>
   </dependencies>
 </project>

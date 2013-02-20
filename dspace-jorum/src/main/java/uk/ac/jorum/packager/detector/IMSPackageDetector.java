@@ -26,7 +26,6 @@ package uk.ac.jorum.packager.detector;
 import org.dspace.content.Bitstream;
 import org.dspace.content.packager.PackageIngester;
 import org.jdom.Document;
-
 import uk.ac.jorum.packager.IMSIngester;
 
 /**

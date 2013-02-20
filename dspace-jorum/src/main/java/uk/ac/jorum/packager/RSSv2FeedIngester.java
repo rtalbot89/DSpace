@@ -31,15 +31,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dspace.authorize.AuthorizeException;
-import org.dspace.content.Bitstream;
-import org.dspace.content.BitstreamFormat;
-import org.dspace.content.Bundle;
-import org.dspace.content.Collection;
-import org.dspace.content.DCValue;
-import org.dspace.content.DSpaceObject;
-import org.dspace.content.InstallItem;
-import org.dspace.content.Item;
-import org.dspace.content.WorkspaceItem;
+import org.dspace.content.*;
 import org.dspace.content.crosswalk.CrosswalkException;
 import org.dspace.content.crosswalk.CrosswalkObjectNotSupported;
 import org.dspace.content.crosswalk.IngestionCrosswalk;
@@ -329,32 +321,29 @@ public class RSSv2FeedIngester extends BaseXmlIngester {
 		
 	}
 
-    @Override
     public DSpaceObject ingest(Context context, DSpaceObject parent, File pkgFile, PackageParameters params, String license) throws PackageException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public List<DSpaceObject> ingestAll(Context context, DSpaceObject parent, File pkgFile, PackageParameters params, String license) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public DSpaceObject replace(Context context, DSpaceObject dso, File pkgFile, PackageParameters params) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public List<DSpaceObject> replaceAll(Context context, DSpaceObject dso, File pkgFile, PackageParameters params) throws PackageException, UnsupportedOperationException, CrosswalkException, AuthorizeException, SQLException, IOException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
     public String getParameterHelp() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    
+    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 	
 	

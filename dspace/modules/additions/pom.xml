@@ -74,10 +74,6 @@
    <dependencies>
       <dependency>
          <groupId>org.dspace</groupId>
-         <artifactId>dspace-api</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.dspace</groupId>
          <artifactId>dspace-api-lang</artifactId>
       </dependency>
       <dependency>
@@ -96,7 +92,21 @@
             </exclusion>
          </exclusions>
       </dependency>
-
+<dependency>
+    	<groupId>eu.medsea.mimeutil</groupId>
+    	<artifactId>mime-util</artifactId>
+    	<version>2.1.1</version>
+	</dependency>
+        <dependency>
+    	<groupId>org.apache.velocity</groupId>
+    	<artifactId>velocity</artifactId>
+    	<version>1.6.2</version>
+	</dependency>
+      <dependency>
+         <groupId>org.dspace</groupId>
+         <artifactId>dspace-api</artifactId>
+         <version>3.2-SNAPSHOT</version>
+      </dependency>
    </dependencies>
-
+   
 </project>

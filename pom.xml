@@ -1104,7 +1104,7 @@
       </developer>
       <developer>
          <name>Jeffrey Trimble</name>
-         <email />
+         <email/>
          <roles>
            <role>commiter</role>
         </roles>
@@ -1141,8 +1141,8 @@
          <name>Pere Villega</name>
          <email>pere.villega@gmail.com</email>
          <url>http://www.perevillega.com</url>
-         <organization />
-         <organizationUrl />
+         <organization/>
+         <organizationUrl/>
          <roles>
             <role>developer</role>
          </roles>
@@ -1188,10 +1188,6 @@
         on release to deploy release versions to the repository by the
         release manager.
     -->
-    <modules>
-        <module>../../Jorum-DSpace/modified/1.5.2/jorum</module>
-        <module>../../Jorum-DSpace/modified/1.5.2/jorum-utils</module>
-    </modules>
     <distributionManagement>
         <!-- further distribution management is found upstream in the sonatype parent -->
     </distributionManagement>
@@ -1204,4 +1200,8 @@
         </repository>
     </repositories>
     
+  <modules>
+    <module>jorum-utils</module>
+    <module>dspace-jorum</module>
+  </modules>
 </project>

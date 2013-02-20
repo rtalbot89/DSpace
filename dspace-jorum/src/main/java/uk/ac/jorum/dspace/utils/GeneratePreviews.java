@@ -140,23 +140,20 @@ public class GeneratePreviews {
 					DSpaceObject obj = HandleManager.resolveToObject(context, handle);
 					if (obj != null && obj instanceof Item){
 						System.out.println("Calling postInstallHook on item with handle: " + handle);
-						try{
+						//try{
 							((Item)obj).postInstallHook(context);
 					
-						} catch (NonCriticalException e3){
-							System.err.println("Non-critical exception caught calling postInstallHook:");
-							e3.printStackTrace();
-						}catch (Exception e2){
-							System.err.println("Exception calling postInstallHook:");
-							e2.printStackTrace();
-						}
+						//} catch (NonCriticalException e3){
+							//System.err.println("Non-critical exception caught calling postInstallHook:");
+						//}catch (Exception e2){
+							//System.err.println("Exception calling postInstallHook:");
+						//}
 					}
 				}
 			}
 	        
 			context.complete();
 		} catch (Exception e){
-			e.printStackTrace();
 		}
 		
 		

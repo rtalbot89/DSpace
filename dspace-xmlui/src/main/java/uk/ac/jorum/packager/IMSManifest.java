@@ -642,7 +642,8 @@ public class IMSManifest extends XMLManifest {
 		if (contentFiles != null)
 			return contentFiles;
 
-		Element resourcesSec = manifestRoot.getChild(IMSManifest.RESOURCES_ELEM, IMS_CP_NS);
+		//Element resourcesSec = manifestRoot.getChild(IMSManifest.RESOURCES_ELEM, IMS_CP_NS);
+                Element resourcesSec = manifestRoot.getChild(IMSManifest.RESOURCES_ELEM, null);
 		if (resourcesSec == null)
 			throw new MetadataValidationException("Invalid IMS Manifest: DSpace requires a "
 					+ IMSManifest.RESOURCES_ELEM + " element, but it is missing.");

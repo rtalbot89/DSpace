@@ -1202,6 +1202,5 @@
     
   <modules>
     <module>jorum-utils</module>
-    <module>dspace-jorum</module>
   </modules>
 </project>

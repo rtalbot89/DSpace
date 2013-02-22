@@ -2,7 +2,7 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
-	xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2"
+	xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
 	exclude-result-prefixes="imsmd" version="1.0">
 	
 	

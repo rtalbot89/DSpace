@@ -51,11 +51,11 @@ import uk.ac.jorum.utils.URLChecker;
  * 
  */
 public class MetadataFormat {
-
+//chnaged imsmd url from jorum original of http://www.imsglobal.org/xsd/imsmd_v1p2
 	public final static MetadataFormat IMSMDV1P2 = new MetadataFormat(
 			"IMSMD",
 			"lom",
-			"http://www.imsglobal.org/xsd/imsmd_v1p2", 
+			"http://www.imsglobal.org/xsd/imsmd_rootv1p2p1", 
 			"//jfoo:rights/jfoo:description/jfoo:langstring",
 			"rights/description/langstring",
 			"//jfoo:classification/jfoo:taxonpath/jfoo:taxon/jfoo:entry/jfoo:langstring",

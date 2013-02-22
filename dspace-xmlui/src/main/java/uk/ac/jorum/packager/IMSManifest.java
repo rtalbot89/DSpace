@@ -68,8 +68,12 @@ public class IMSManifest extends XMLManifest {
 	static Logger log = Logger.getLogger(IMSManifest.class);
 
 	/** IMS namespace */
-	public static final String IMS_CP_URI = "http://www.imsglobal.org/xsd/imscp_v1p1";
+        //replaced jorum default
+	//public static final String IMS_CP_URI = "http://www.imsglobal.org/xsd/imscp_v1p1";
+        
+        public static final String IMS_CP_URI = "http://www.imsproject.org/xsd/imscp_rootv1p1p2";
 	public static final String IMS_XSD = "http://www.imsglobal.org/xsd/imscp_v1p1.xsd";
+        //next thing replace namespace prefix
 	public static Namespace IMS_CP_NS = Namespace.getNamespace("imscpv1p1", IMS_CP_URI);
 	public static Namespace IMS_CP_NS_UNNAMED = Namespace.getNamespace(IMS_CP_URI);
 	public static Namespace XSI = Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");

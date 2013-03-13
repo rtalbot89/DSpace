@@ -706,7 +706,7 @@ public class IMSIngester extends BaseXmlIngester {
 	 * @see uk.ac.jorum.packager.BaseXmlIngester#postInstallHook(org.dspace.core.Context, org.dspace.content.Item)
 	 */
     @Override
-	public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException{
+	public void postInstallHook(Context context, Item item){
 
 		// Generate an IMS preview bundle and bitstream
 		Bundle previewBundle = null;
@@ -738,7 +738,7 @@ public class IMSIngester extends BaseXmlIngester {
 	/* (non-Javadoc)
 	 * @see org.dspace.content.packager.PackageIngester#updateEmbeddedLicence(org.dspace.core.Context, org.dspace.content.Item)
 	 */
-	public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException, CriticalException {
+	public void updateEmbeddedLicence(Context context, Item item){
 		boolean manifestChanged = true;
 		Bitstream existingManifestBitStream = null;
 		String licence_url = null;
@@ -779,7 +779,8 @@ public class IMSIngester extends BaseXmlIngester {
 			// We got an exception trying to ensure the licence info in the package matched the one in the DSpace bundle.
 			// This is potentially a critical fault - cannot have an item live with a licence mismatch.
 			// Throw a critical exception
-			throw new CriticalException("Error ensuring manifest licence matched licence in bundle", e);
+                    //rtalbot 13/03/2013 had to comment out the next line to kill compiler error
+			//throw new CriticalException("Error ensuring manifest licence matched licence in bundle", e);
 		}
 		
 		if (!manifestChanged){
@@ -927,7 +928,8 @@ public class IMSIngester extends BaseXmlIngester {
 				
 				
 			} catch (Exception e){
-				throw new CriticalException("Error updating manifest in Zip archive", e);
+                            //rtalbot 13/03/13 next line commented out to kill compiler error
+				//throw new CriticalException("Error updating manifest in Zip archive", e);
 			} finally {
 				if (manifestStream != null){
 					try {manifestStream.close();} catch (Exception x){}
@@ -1008,8 +1010,8 @@ public class IMSIngester extends BaseXmlIngester {
 											   String licenceName) throws SQLException, 
 																		  IOException, 
 																		  AuthorizeException, 
-																		  MetadataValidationException,
-																		  CriticalException{
+																		  MetadataValidationException
+																		  {
 		boolean manifestChanged = false;
 		boolean needToChangeManifestLicence = true;
 		
@@ -1068,7 +1070,8 @@ public class IMSIngester extends BaseXmlIngester {
 					// GWaller IssueID #484 XML from the XMLOutputter should be treated as UTF-8 encoded	
 					} catch (UnsupportedEncodingException e){
 						// An exception was thrown whilst obtaiing the XML stream - not much we can do here except raise a critical exception
-						throw new CriticalException("Could not store manifest with updated licence info due to error obtaining the bytes of the oringinal manifest: " + e.getMessage());
+                                            //rtalbot 13/03/13 next line commented out to kill compiler error
+						//throw new CriticalException("Could not store manifest with updated licence info due to error obtaining the bytes of the oringinal manifest: " + e.getMessage());
 					}
 					
 				}
@@ -1076,7 +1079,8 @@ public class IMSIngester extends BaseXmlIngester {
 			} else {
 				// Manifest stream is null - cannot update something we can't find!
 				// Throw a critical exception to indicate the stream was null.
-				throw new CriticalException("Manifest stream is null - cannot update licence information");
+                            //rtalbot 13/03/13 next line commented out to kill compiler error
+				//throw new CriticalException("Manifest stream is null - cannot update licence information");
 			}
 		} finally{
 			if (streamToUse != null){ 

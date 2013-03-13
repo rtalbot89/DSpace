@@ -435,11 +435,7 @@
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
-        <dependency>
-            <groupId>uk.ac.jorum</groupId>
-            <artifactId>jorum-utils</artifactId>
-            <version>1.0</version>
-        </dependency>
+
     </dependencies>
 
 </project>

@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.*;
@@ -43,7 +42,6 @@ import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.core.LogManager;
 import org.jdom.Element;
-
 import uk.ac.jorum.dspace.utils.BundleUtils;
 import uk.ac.jorum.exceptions.CriticalException;
 import uk.ac.jorum.exceptions.NonCriticalException;
@@ -291,7 +289,7 @@ public class RSSv2FeedIngester extends BaseXmlIngester {
 	 */
 	public boolean updateLicenceInfoInManifest(Context context, Item item, Bitstream bitstreamContainingManifest,
 			InputStream manifestStream, boolean backupBitstream, String licenceUrl, String licenceName)
-			throws SQLException, IOException, AuthorizeException, MetadataValidationException, CriticalException {
+			throws SQLException, IOException, AuthorizeException, MetadataValidationException {
 		/* !!! NOTE:
 		 
 		 The current implementation of the RSS ingester simply creates web resource links. As it won't create any 
@@ -310,7 +308,7 @@ public class RSSv2FeedIngester extends BaseXmlIngester {
 	 *
 	 * @see org.dspace.content.packager.PackageIngester#updateEmbeddedLicence(org.dspace.core.Context, org.dspace.content.Item)
 	 */
-	public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException, CriticalException {
+	public void updateEmbeddedLicence(Context context, Item item)  {
 		/* !!! NOTE:
 		 
 		 The current implementation of the RSS ingester simply creates web resource links. As it won't create any 

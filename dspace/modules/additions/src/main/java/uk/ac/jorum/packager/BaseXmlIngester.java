@@ -241,7 +241,7 @@ public abstract class BaseXmlIngester implements PackageIngester {
 	/* (non-Javadoc)
 	 * @see org.dspace.content.packager.PackageIngester#postInstallHook(org.dspace.core.Context, org.dspace.content.Item)
 	 */
-	public abstract void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException;
+	public abstract void postInstallHook(Context context, Item item);
 
 	/* (non-Javadoc)
 	 * @see org.dspace.content.packager.PackageIngester#replace(org.dspace.core.Context, org.dspace.content.Item, java.io.InputStream, org.dspace.content.packager.PackageParameters)

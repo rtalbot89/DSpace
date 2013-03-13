@@ -263,7 +263,7 @@ public abstract class LicenceController
 					    		// We have a content package
 					    		if (ingester != null){
 					    			try{
-					    				ingester.updateEmbeddedLicence(context, relatedItem);
+                                                            ingester.updateEmbeddedLicence(context, relatedItem);
 					    			} catch (NonCriticalException e){
 					    				ExceptionLogger.logException(log, e);
 					    				// It was non-critical so keep going
@@ -291,7 +291,7 @@ public abstract class LicenceController
 		return foundUnsupportedLicence;
 	}
 	 
-	public static boolean foundUnsupportedLicenceInItemOrRelated(Item item, Context context) throws IOException, SQLException, AuthorizeException{
+	public static boolean foundUnsupportedLicenceInItemOrRelated(Item item, Context context) throws IOException, SQLException, AuthorizeException, NonCriticalException{
 		boolean result = false;
 		try{
 			result = detectAndResetUnsupportedLicenceInRelatedItems(context, item, null, true, false);

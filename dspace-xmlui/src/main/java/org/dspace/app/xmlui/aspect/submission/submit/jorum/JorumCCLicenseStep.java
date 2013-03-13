@@ -42,6 +42,7 @@ package org.dspace.app.xmlui.aspect.submission.submit.jorum;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import org.apache.cocoon.environment.ObjectModelHelper;
 import org.apache.cocoon.environment.Request;
@@ -68,6 +69,7 @@ import org.dspace.eperson.Group;
 import org.xml.sax.SAXException;
 
 import uk.ac.jorum.dspace.utils.BundleUtils;
+import uk.ac.jorum.exceptions.NonCriticalException;
 import uk.ac.jorum.licence.LicenceController;
 import uk.ac.jorum.licence.ItemLicence;
 import uk.ac.jorum.licence.LicenceManager;
@@ -166,19 +168,22 @@ public class JorumCCLicenseStep extends AbstractSubmissionStep {
 		// a new div, onsiteDiv when externalChooser=true 
 		// an existing div, ccLicenceDiv when externalChooser=false 
 		List form = null;
-		
-		// START GWaller 4/11/09 IssueId #108 Added error message to indicate an item was found with an unspported licence
-		// Only want to display the notice if the user submitted a piece of content which could already contain a licence i.e. a content package
-		// or they submitted multiple items and atleast one of them could contain a licence 
-		// i.e. need to check if the item has a RELATED_CP bundle or a ARCHIVED_CP bundle
-		if ((BundleUtils.hasBundle(item, Constants.RELATED_CONTENT_PACKAGE_BUNDLE) ||
-				BundleUtils.hasBundle(item, Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE)) &&
-				LicenceController.foundUnsupportedLicenceInItemOrRelated(item, context)){
-			log.info(LogManager.getHeader(context, "unsupported_licence", submissionInfo.getSubmissionLogInfo()));
-		
-			div.addPara().addHighlight("error").addContent(T_unsupported_licence_warning);
-		} 
-		// END GWaller 4/11/09 IssueId #108 Added error message to indicate an item was found with an unspported licence
+        try {
+            // START GWaller 4/11/09 IssueId #108 Added error message to indicate an item was found with an unspported licence
+            // Only want to display the notice if the user submitted a piece of content which could already contain a licence i.e. a content package
+            // or they submitted multiple items and atleast one of them could contain a licence 
+            // i.e. need to check if the item has a RELATED_CP bundle or a ARCHIVED_CP bundle
+            if ((BundleUtils.hasBundle(item, Constants.RELATED_CONTENT_PACKAGE_BUNDLE) ||
+                            BundleUtils.hasBundle(item, Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE)) &&
+                            LicenceController.foundUnsupportedLicenceInItemOrRelated(item, context)){
+                    log.info(LogManager.getHeader(context, "unsupported_licence", submissionInfo.getSubmissionLogInfo()));
+            
+                    div.addPara().addHighlight("error").addContent(T_unsupported_licence_warning);
+            } 
+            // END GWaller 4/11/09 IssueId #108 Added error message to indicate an item was found with an unspported licence
+        } catch (NonCriticalException ex) {
+            java.util.logging.Logger.getLogger(JorumCCLicenseStep.class.getName()).log(Level.SEVERE, null, ex);
+        }
 	
 		//Add details for link to external CC chooser 
 		if (externalChooser) {

@@ -1104,7 +1104,7 @@
       </developer>
       <developer>
          <name>Jeffrey Trimble</name>
-         <email/>
+         <email />
          <roles>
            <role>commiter</role>
         </roles>
@@ -1200,7 +1200,4 @@
         </repository>
     </repositories>
     
-  <modules>
-    <module>jorum-utils</module>
-  </modules>
 </project>

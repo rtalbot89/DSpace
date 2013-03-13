@@ -27,6 +27,8 @@ import org.dspace.storage.rdbms.DatabaseManager;
 import org.dspace.storage.rdbms.TableRow;
 import org.dspace.storage.rdbms.TableRowIterator;
 
+import uk.ac.jorum.utils.ExceptionLogger;
+
 /**
  * Class representing an item in the process of being submitted by a user
  * 
@@ -666,4 +668,20 @@ public class WorkspaceItem implements InProgressSubmission
     {
         wiRow.setColumn("published_before", b);
     }
+     // GWaller 30/11/09 Method to reset collection
+    public void setCollection(Collection c) throws SQLException, AuthorizeException, IOException{
+    	log.debug("Resetting collection in WorkspaceItem. New Collection:  " + c.getName() + " (id=" + c.getID() + ")" );
+    	int origCol = wiRow.getIntColumn("collection_id");
+    	try{
+    		wiRow.setColumn("collection_id", c.getID());
+    		this.update();
+    		// Must of course set the instance pointer to the new collection!
+    		this.collection = c;
+    	} catch (Exception e){
+    		ExceptionLogger.logException(log, e);
+    		// reset the row back to the orig
+    		wiRow.setColumn("collection_id", origCol);
     	}
+    	
+    }
+}

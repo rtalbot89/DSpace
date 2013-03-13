@@ -269,7 +269,7 @@ public class PackageDetectorStep extends AbstractProcessingStep {
 	            SQLException, AuthorizeException{
 		 
 		 logger.debug("PackageDetectorStep::doProcessing Entering ...");
-		 
+		 logger.debug("robmessage just testing");
 		 int result = STATUS_COMPLETE;
 		 boolean multipleFiles = false;
 		 Item item = subInfo.getSubmissionItem().getItem();

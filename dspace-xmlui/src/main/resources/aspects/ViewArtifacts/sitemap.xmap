@@ -31,6 +31,8 @@ and searching the repository.
             <map:transformer name="RestrictedItem" src="org.dspace.app.xmlui.aspect.artifactbrowser.RestrictedItem"/>
 
             <map:transformer name="Statistics" src="org.dspace.app.xmlui.aspect.artifactbrowser.StatisticsViewer"/>
+            <!--Rtalbot 26/02/13 added cp preview through cocoon -->
+            <map:transformer name="PreviewCP" src="org.dspace.app.xmlui.aspect.artifactbrowser.PreviewCP"/>
         </map:transformers>
 
 
@@ -212,6 +214,15 @@ and searching the repository.
                                 <map:transform type="Contact"/>
                                 <map:serialize type="xml"/>
                         </map:match>
+                        
+                        <!--RTalbot 26/02/13 preview transform -->
+                        <map:match pattern="handle/*/**/previewcp">
+                             <!--<map:transform src="ims.xsl"/>-->
+                                <map:transform type="PreviewCP"/>
+                               
+                                <map:serialize type="xml"/>
+                        </map:match>
+                        
 
 
                         <!-- Not a URL we care about, so just pass it on. -->
@@ -219,4 +230,5 @@ and searching the repository.
 
                 </map:pipeline>
         </map:pipelines>
+  
 </map:sitemap>

@@ -705,15 +705,15 @@ public class IMSIngester extends BaseXmlIngester {
 	/* (non-Javadoc)
 	 * @see uk.ac.jorum.packager.BaseXmlIngester#postInstallHook(org.dspace.core.Context, org.dspace.content.Item)
 	 */
+    @Override
 	public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException{
 
 		// Generate an IMS preview bundle and bitstream
 		Bundle previewBundle = null;
 		try{
+                    log.debug("robmessage about to create preview bundle");
 			previewBundle = BundleUtils.getBundleByName(item, Constants.PREVIEW_PACKAGE_BUNDLE);
-			IMSHtmlPreviewGenerator.generatePreviewBitstream(context, 
-															item, 
-															previewBundle);
+			IMSHtmlPreviewGenerator.generatePreviewBitstream(context, item, previewBundle);
 		} catch (Exception e){
 			ExceptionLogger.logException(log, e);
 			

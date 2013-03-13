@@ -429,11 +429,10 @@
 	                <td align="center" colspan="2">
 						<p>
 						<!-- START GWaller 13/9/10 IssueID #303 Support for multiple licence options -->
-						<xsl:choose>
-                    			<xsl:when test="$viewAuthorised='true'">
+						
 								<!-- BEGIN IF 04/10/09: IssueID #99 Add download link for items created by uploaded content package -->
-								<xsl:choose>
-									<xsl:when test="$user_authenticated = 'yes'">
+								
+									
 									 <a>
 										<xsl:variable name="webappcontext" select="substring-before(ancestor::mets:METS/@OBJEDIT, '/admin/')" />
 										<xsl:attribute name="href">
@@ -446,22 +445,9 @@
 										<img src="{$webappcontext}/themes/Jorum/images/export-resource.png" />
 									
 									</a>
-									</xsl:when>
-									<xsl:otherwise>
-									 <a>
-										<xsl:variable name="webappcontext" select="substring-before(ancestor::mets:METS/@OBJEDIT, '/admin/')" />
-										<xsl:attribute name="href">
-										<xsl:variable name="itemId" select="substring-after(ancestor::mets:METS/@OBJEDIT, '/item')"/>
-										<xsl:variable name="downloadStart" select="concat($webappcontext, '/anon-export')"/>
-										<xsl:variable name="downloadHref" select="concat($downloadStart, $itemId)"/>
-										<xsl:value-of select="$downloadHref"/>
-										</xsl:attribute>
-										<!-- TODO: This png should be changed to Download Content Package, rather than Export Resource -->
-										<img src="{$webappcontext}/themes/Jorum/images/export-resource.png" />
 									
-									</a>
-									</xsl:otherwise>
-								</xsl:choose>
+									
+								
 								<!-- START GWaller 12/11/09 IssueID #73 Added preview link for content packages -->
 								<xsl:if test="/mets:METS/mets:fileSec/mets:fileGrp[@USE='PREVIEW_CP']/mets:file">
 								<xsl:for-each select="/mets:METS/mets:fileSec/mets:fileGrp[@USE='PREVIEW_CP']/mets:file/mets:FLocat[@xlink:title='PreviewIndexBitstream']">
@@ -494,9 +480,9 @@
 									</xsl:for-each>
 								</xsl:if>-->
 								<!-- END IF 04/10/09: IssueID #99 Add download link for items created by uploaded content package -->
-						</xsl:when>
+						
                     			
-                    	</xsl:choose>
+                    
 						</p>
 				</td>
 			</tr>

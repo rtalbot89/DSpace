@@ -50,7 +50,7 @@ public class Item extends RichTextContainer implements StructuralElement
      *            (May be null) a rendering hint used to override the default
      *            display of the element.
      */
-    public Item(WingContext context, String name, String rend)
+    protected Item(WingContext context, String name, String rend)
             throws WingException
     {
         super(context);

@@ -47,11 +47,6 @@ public class Option extends TextContainer
         this.returnValue = returnValue;
     }
     
-     // GWaller 3/12/10
-    public void addWingElement(AbstractWingElement e){
-    	contents.add(e);
-    }
-
     /**
      * Translate this element and all contained elements into SAX events. The
      * events should be routed to the contentHandler found in the WingContext.

@@ -77,7 +77,7 @@ public abstract class AbstractWingElement implements WingElement
      * Return the currently registered wing context.
      * 
      */
-    public WingContext getWingContext()
+    protected WingContext getWingContext()
     {
         return this.context;
     }

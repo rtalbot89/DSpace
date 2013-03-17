@@ -121,6 +121,13 @@
          <type>jar</type>
          <classifier>classes</classifier>
       </dependency>
+      <!-- rtalbot 17/03/13 resolving Netbeans dependency -->
+      <dependency>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-xmlui</artifactId>
+            <version>3.2-SNAPSHOT</version>
+            <scope>provided</scope>
+         </dependency>
 
       <dependency>
          <groupId>javax.servlet</groupId>

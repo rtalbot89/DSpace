@@ -33,25 +33,10 @@
     exclude-result-prefixes="xalan encoder i18n dri mets dim  xlink xsl">
 
     <xsl:output indent="yes"/>
-    
 
     <!-- An item rendered in the summaryView pattern. This is the default way to view a DSpace item in Manakin. -->
     <xsl:template name="itemSummaryView-DIM">
-        <!-- START GWaller 12/11/09 IssueID #73 Added preview link for content packages -->
-								<xsl:if test="/mets:METS/mets:fileSec/mets:fileGrp[@USE='PREVIEW_CP']/mets:file">
-								<xsl:for-each select="/mets:METS/mets:fileSec/mets:fileGrp[@USE='PREVIEW_CP']/mets:file/mets:FLocat[@xlink:title='PreviewIndexBitstream']">
-									<a>
-										<xsl:attribute name="href">
-											<xsl:value-of select="@xlink:href"/>
-										</xsl:attribute>
-										<xsl:variable name="webappcontext" select="substring-before(@xlink:href, '/bitstream/')"/>
-										<img src="{$webappcontext}/themes/Jorum/images/preview-content-package.png" />
-									</a>
-								</xsl:for-each>
-								</xsl:if>
-								<!-- END GWaller 12/11/09 IssueID #73 Added preview link for content packages -->
         <!-- Generate the info about the item from the metadata section -->
-        <p>Foo</p>
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
 

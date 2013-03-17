@@ -44,19 +44,6 @@ import org.dspace.core.Context;
  */
 public interface PackageIngester
 {
-    // START 24/9/09 GWaller Added params into interface so they can be referenced by all packager classes 
-	/** String defining the constant name use to switch package XML validation on/off */
-	public static final String VALIDATE_PARAM = "validate";
-	
-	/** String defining the constant name use to tell the packager to fail or not if a licence is not found */
-	public static final String FAIL_NO_LICENCE_PARAM = "failNoLicence";
-	// END 24/9/09 GWaller Added params into interface so they can be referenced by all packager classes 
-    
-	public static final String ALTER_OWNING_COL_PARAM = "alterOwningCol";
-	public static final String FORCED_CC_LICENCE = "forcedCCLicence";
-	
-	// GWaller 6/5/10 IssueID#263 Support for web links not in a manifest resource element
-	public static final String MAX_METADATA_WEB_LINKS_TO_USE = "maxMetadataWebLinks";
     /**
      * Create new DSpaceObject out of the ingested package.  The object
      * is created under the indicated parent.  This creates a

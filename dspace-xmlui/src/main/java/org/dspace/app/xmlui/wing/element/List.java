@@ -568,8 +568,4 @@ public class List extends AbstractWingElement implements WingMergeableElement,
         contents = null;
         super.dispose();
     }
-    
-    public void addWingElement(AbstractWingElement e){
-    	contents.add(e);
     }
-}

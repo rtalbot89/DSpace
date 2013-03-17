@@ -204,7 +204,6 @@ public class Item extends DSpaceObject
 
         log.info(LogManager.getHeader(context, "create_item", "item_id="
                 + row.getIntColumn("item_id")));
-        log.debug("robmessage in Item.java");
 
         return i;
     }

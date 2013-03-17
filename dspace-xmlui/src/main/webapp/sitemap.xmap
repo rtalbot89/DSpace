@@ -438,7 +438,6 @@
                         <map:match pattern="JSON/controlled-vocabulary">
                             <map:read type="JSONControlledVocabularyReader"/>
                         </map:match>
-                        
                 </map:pipeline>
 
                 <!-- new AJAX menu (choices) responses for metadata authority control -->
@@ -714,38 +713,4 @@
                         </map:select>
                 </map:handle-errors>
         </map:pipelines>
-                <!-- debugging views: add these to your views -->
-  <!-- make sure you comment out debugging views before deployment -->
-  <map:views>
-  <map:view from-position="first" name="first">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-position="first" name="firsthtml">
-    <map:serialize type="html"/>
-  </map:view>
-  <map:view from-position="first" name="firsttext">
-    <map:serialize type="text"/>
-  </map:view>
-  <map:view from-label="debug1" name="debug1">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-label="debug2" name="debug2">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-label="debug3" name="debug3">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-label="debug4" name="debug4">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-position="last" name="last">
-    <map:serialize type="xml"/>
-  </map:view>
-  <map:view from-position="last" name="lasthtml">
-    <map:serialize type="html"/>
-  </map:view>
-  <map:view from-position="last" name="lasttext">
-    <map:serialize type="text"/>
-  </map:view>
-        </map:views>
 </map:sitemap>

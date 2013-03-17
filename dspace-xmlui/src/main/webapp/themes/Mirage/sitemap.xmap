@@ -139,10 +139,7 @@
 
                 <map:transform type="IncludePageMeta">
                     <map:parameter name="stylesheet.all" value="lib/css/media.css"/>
-                    <map:parameter name="javascript#1" value="lib/js/jquery-ui-1.8.15.custom.min.js"/>
-                    <!--rtalbot 13/03/13 link to javascript for preview page.
-                    May be better to localise this to the preview page in some fashion -->
-                    <map:parameter name="javascript#2" value="lib/js/cp-preview.js"/>
+                    <map:parameter name="javascript" value="lib/js/jquery-ui-1.8.15.custom.min.js"/>
                     <map:parameter name="theme.path" value="{global:theme-path}"/>
                     <map:parameter name="theme.name" value="{global:theme-name}"/>
                 </map:transform>

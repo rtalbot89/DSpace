@@ -38,17 +38,10 @@
     <xsl:output indent="yes"/>
 
     <xsl:template name="itemSummaryView-DIM">
-       
         <!-- Generate the info about the item from the metadata section -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
         mode="itemSummaryView-DIM"/>
-  <!-- rtalbot START 10/03/13 test for a manifest and call the cp-preview-link template if there is one-->
-  <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='METADATA']/mets:file/mets:FLocat[@xlink:title='imsmanifest.xml']">
-      <xsl:call-template name="cp-preview-link">
-          <xsl:with-param name="man-url" select="./mets:fileSec/mets:fileGrp[@USE='METADATA']/mets:file/mets:FLocat[@xlink:title='imsmanifest.xml']/@xlink:href"/>
-      </xsl:call-template>
-  </xsl:if>
-  <!-- rtalbot END 10/03/13 -->
+
         <xsl:copy-of select="$SFXLink" />
         <!-- Generate the bitstream information from the file section -->
         <xsl:choose>
@@ -62,7 +55,6 @@
             <xsl:when test="./mets:fileSec/mets:fileGrp[@USE='ORE']">
                 <xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='ORE']"/>
             </xsl:when>
-            
             <xsl:otherwise>
                 <h2><i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-head</i18n:text></h2>
                 <table class="ds-table file-list">
@@ -86,7 +78,7 @@
 
     </xsl:template>
 
-<!--this is the key summary template -->
+
     <xsl:template match="dim:dim" mode="itemSummaryView-DIM">
         <div class="item-summary-view-metadata">           
             <xsl:call-template name="itemSummaryView-DIM-fields"/>
@@ -291,7 +283,6 @@
               </xsl:call-template>
           </xsl:when>
           
-          
           <xsl:when test="$clause = 7 and $ds_item_view_toggle_url != ''">
               <p class="ds-paragraph item-view-toggle item-view-toggle-bottom">
                   <a>
@@ -315,7 +306,6 @@
 
          <!-- Generate the Creative Commons license information from the file section (DSpace deposit license hidden by default) -->
         <xsl:apply-templates select="mets:fileSec/mets:fileGrp[@USE='CC-LICENSE']"/>
-        
     </xsl:template>
 
 
@@ -545,24 +535,5 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
- <!--rtalbot 11/03/13 
-   Named template to generate link to preview page
-   if this is an IMS CP
-    -->
-    <xsl:template name = "cp-preview-link">
-        <xsl:param name="man-url"/>
-        <xsl:variable name="webappcontext" select="substring-before($man-url, '/bitstream/')"/>
-        <a>
-            <xsl:attribute name="href">
-                <xsl:value-of select="concat($webappcontext,'/',$request-uri,'/previewcp')"/>
-            </xsl:attribute>
-            <xsl:attribute name="target">_blank</xsl:attribute>
-            <xsl:attribute name="id">
-                <xsl:text>cp-preview</xsl:text>
-            </xsl:attribute>
-            <!-- rtalbot 13/03/13 dodgy use of link to graphic below
-            probably use something other that Jorum's anyway -->
-            <img src="{$webappcontext}/themes/Jorum_v2/images/package-preview.png" />
-        </a>
-    </xsl:template>
+
 </xsl:stylesheet>

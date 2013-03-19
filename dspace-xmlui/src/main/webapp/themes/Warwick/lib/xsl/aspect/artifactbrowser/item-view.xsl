@@ -562,7 +562,7 @@
             </xsl:attribute>
             <!-- rtalbot 13/03/13 dodgy use of link to graphic below
             probably use something other that Jorum's anyway -->
-            <img src="{$webappcontext}/themes/Jorum_v2/images/package-preview.png" />
+            <img src="{$webappcontext}/themes/Warwick/images/preview-content-package.png" />
         </a>
     </xsl:template>
 </xsl:stylesheet>

@@ -1,27 +1,10 @@
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * The contents of this file are subject to the license and copyright
+ * detailed in the LICENSE and NOTICE files at the root of the source
+ * tree and available online at
  *
- *
- *  University Of Edinburgh (EDINA) 
- *  Scotland
- *
- *
- *  File Name           : VirusChecker.java
- *  Author              : George Hamilton
- *  Approver            : Gareth Waller 
- * 
- *  Notes               :
- *
- *
- *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *
- * HISTORY
- * -------
- *
- * $LastChangedRevision$
- * $LastChangedDate$
- * $LastChangedBy$ 
+ * http://www.dspace.org/license/
  */
- 
 package uk.ac.jorum.utils;
 
 import java.io.BufferedReader;

@@ -231,7 +231,6 @@
         <dependency>
             <groupId>org.dspace.modules</groupId>
             <artifactId>additions</artifactId>
-            <version>3.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -144,6 +144,9 @@ public abstract class Field extends AbstractWingElement implements
     /** Help instructions for this field */
     protected Help help;
     
+    /** Help link to instructions for this field */
+    protected HelpLink helpLink;
+    
     /** Error instructions for this field */
     protected List<Error> errors = new ArrayList<Error>();
     
@@ -370,6 +373,13 @@ public abstract class Field extends AbstractWingElement implements
         this.help.addContent(message);
     }
     
+    public HelpLink createAndSetHelpLink() throws WingException
+    {
+        this.helpLink = new HelpLink(context);
+        return this.helpLink;
+    }
+
+
     /** ******************************************************************** */
     /** Errors * */
     /** ******************************************************************** */

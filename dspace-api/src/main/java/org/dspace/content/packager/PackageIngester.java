@@ -11,11 +11,20 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.io.InputStream;
 
 import org.dspace.authorize.AuthorizeException;
+import org.dspace.content.Bitstream;
+import org.dspace.content.Collection;
 import org.dspace.content.DSpaceObject;
+import org.dspace.content.Item;
+import org.dspace.content.WorkspaceItem;
 import org.dspace.content.crosswalk.CrosswalkException;
+import org.dspace.content.crosswalk.MetadataValidationException;
+import org.dspace.core.Constants;
 import org.dspace.core.Context;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
 
 
 /**
@@ -44,6 +53,19 @@ import org.dspace.core.Context;
  */
 public interface PackageIngester
 {
+    // START 24/9/09 GWaller Added params into interface so they can be referenced by all packager classes 
+	/** String defining the constant name use to switch package XML validation on/off */
+	public static final String VALIDATE_PARAM = "validate";
+	
+	/** String defining the constant name use to tell the packager to fail or not if a licence is not found */
+	public static final String FAIL_NO_LICENCE_PARAM = "failNoLicence";
+	// END 24/9/09 GWaller Added params into interface so they can be referenced by all packager classes 
+    
+	public static final String ALTER_OWNING_COL_PARAM = "alterOwningCol";
+	public static final String FORCED_CC_LICENCE = "forcedCCLicence";
+	
+	// GWaller 6/5/10 IssueID#263 Support for web links not in a manifest resource element
+	public static final String MAX_METADATA_WEB_LINKS_TO_USE = "maxMetadataWebLinks";
     /**
      * Create new DSpaceObject out of the ingested package.  The object
      * is created under the indicated parent.  This creates a
@@ -76,6 +98,14 @@ public interface PackageIngester
                AuthorizeException, SQLException, IOException;
     
     
+
+    
+    // GWaller 26/08/09 Modified to support array of Collections
+    WorkspaceItem ingest(Context context, Collection[] collections, InputStream in,
+                         PackageParameters params, String license)
+        throws PackageException, CrosswalkException,
+               AuthorizeException, SQLException, IOException;
+
     /**
      * Recursively create one or more DSpace Objects out of the contents
      * of the ingested package (and all other referenced packages).
@@ -194,4 +224,50 @@ public interface PackageIngester
      * with this packager
      */
     String getParameterHelp();
+    
+    // START GWaller 11/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
+    public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException;
+    // END GWaller 11/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
+               
+    // START GWaller 02/02/09 IssueID #175 Added methods to deal with licence manipulation inside packages
+    /**
+     * This method ensures the licence information is correct in the package manifest i.e. it contains the same
+     * licence name and url as supplied in the paramaters. It potentially alters the XML manifest and
+     * backs up the original.
+     * NOTE: if the manifest was altered the new manifest is stored in the Constants.METADATA_BUNDLE_NAME bundle
+     * and has the appropriate manifest name e.g. IMSIngester.MANIFEST_FILE
+     * NOTE: This method will close the input stream of the manifest to examine
+     * @param context DSpace context to use for DB calls
+     * @param item the item which contains the package
+     * @param bitstreamContainingManifest can be null. Set this to a non-null value if the manifest to check is contained in a bitstream
+     * @param manifestStream can be null (only if bitstreamContainingManifest is non-null). Set to the stream containing the manifest to check
+     * @param backupBitstream set to true if the manifest should be backed up before being changed (only applicable 
+     * if bitstreamContainingManifest is non null)
+     * @param licenceUrl the url of the licence which the item should have
+     * @param licenceName the name of the licence which the item should have
+     * @return true if the manifest was changed, false otherwise
+     * @throws SQLException
+     * @throws IOException
+     * @throws AuthorizeException
+     * @throws MetadataValidationException
+     * @throws CriticalException
+     */
+    public boolean updateLicenceInfoInManifest(Context context, 
+			   Item item,
+			   Bitstream bitstreamContainingManifest,
+			   InputStream manifestStream,
+			   boolean backupBitstream,
+			   String licenceUrl, 
+			   String licenceName) throws SQLException, 
+										  IOException, 
+										  AuthorizeException, 
+										  MetadataValidationException,
+										  CriticalException;
+    
+    public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException , CriticalException;
+    
+    // END GWaller 02/02/09 IssueID #175 Added methods to deal with licence manipulation inside packages
+
+   // public WorkspaceItem ingest(Context context, Collection[] collections, InputStream retrieve, PackageParameters params, Object object);
+
 }

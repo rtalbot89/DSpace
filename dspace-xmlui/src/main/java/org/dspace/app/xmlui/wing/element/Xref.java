@@ -104,7 +104,7 @@ public class Xref extends TextContainer implements StructuralElement
      *            (Required) A target URL for the references a destination for
      *            the xref.
      */
-    protected Xref(WingContext context, String target) throws WingException
+    public Xref(WingContext context, String target) throws WingException
     {
     	this(context, target, null, null);
     }

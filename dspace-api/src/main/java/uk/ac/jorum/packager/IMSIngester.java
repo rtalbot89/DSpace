@@ -693,6 +693,8 @@ public class IMSIngester extends BaseXmlIngester {
 	public void postInstallHook(Context context, Item item){
 
 		// Generate an IMS preview bundle and bitstream
+        //rtalbot 20/03/13 commented out to skip static preview generation
+        /*
 		Bundle previewBundle = null;
 		try{
                     log.debug("robmessage about to create preview bundle");
@@ -713,7 +715,7 @@ public class IMSIngester extends BaseXmlIngester {
 		
 		// GWaller 16/2/10 IssueID #175 Now ensure the embedded licence is set to the same CC licence store in the CC bundle
 		updateEmbeddedLicence(context, item);
-		
+		*/
 	}
 
 

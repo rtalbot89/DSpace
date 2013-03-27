@@ -38,5 +38,7 @@
     <!-- item details url -->
     <xsl:variable name="ds_item_view_toggle_url" select="//dri:p[contains(@rend , 'item-view-toggle') and
         (preceding-sibling::dri:referenceSet[@type = 'summaryView'] or following-sibling::dri:referenceSet[@type = 'summaryView'])]/dri:xref/@target"/>
+    <!-- rtalbot 27/03/13 variable to capture query string. To use in toggling bitstream list-->
+        <xsl:variable name="queryString" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='queryString']"/>
 
 </xsl:stylesheet>

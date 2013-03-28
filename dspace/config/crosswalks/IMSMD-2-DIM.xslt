@@ -105,6 +105,21 @@
 		</xsl:element>	
 	  </xsl:if>
 	</xsl:template>
+        
+        <!-- rtalbot 28/03/13 title match in Xerte which is slightly odd
+        Match the title imsmd=>general=>title=>string -->
+	<xsl:template match="imsmd:title/imsmd:string">
+	  <xsl:if test="normalize-space(.)">
+		<xsl:element name="dim:field">
+			<xsl:attribute name="mdschema">dc</xsl:attribute>
+			<xsl:attribute name="element">title</xsl:attribute>
+      		<xsl:attribute name="lang">
+				<xsl:value-of select="@language"/>
+			</xsl:attribute>
+		<xsl:value-of select="normalize-space(.)"/>
+		</xsl:element>	
+	  </xsl:if>
+	</xsl:template>
 
 
 	<!-- Get the identifier imsmd=>general=>language -->

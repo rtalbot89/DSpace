@@ -2082,7 +2082,12 @@ they should use the content only for non-commercial purposes.</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">URI</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Date</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-subject"><!--Subject-->Keywords</message>
+        
+        <!--***Added by CG****-->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-web-resource">Web Resource Address</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-web-resource-title">Web Link Resource</message>
+	<!--*******-->
 
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-head">Files in this item</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-file">Files</message>

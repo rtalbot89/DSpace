@@ -42,6 +42,9 @@
         <!-- Generate the info about the item from the metadata section -->
         <xsl:apply-templates select="./mets:dmdSec/mets:mdWrap[@OTHERMDTYPE='DIM']/mets:xmlData/dim:dim"
                              mode="itemSummaryView-DIM"/>
+                              <!-- START CG - 06/10/09 Check if URL_BUNDLE exists and display if so -->
+        <xsl:call-template name="url_bundle"/>
+		<!-- END CG - 06/10/09 -->
   <!-- rtalbot START 10/03/13 test for a manifest and call the cp-preview-link template if there is one-->
         <xsl:if test="./mets:fileSec/mets:fileGrp[@USE='METADATA']/mets:file/mets:FLocat[@xlink:title='imsmanifest.xml']">
             <xsl:call-template name="cp-preview-link">
@@ -624,4 +627,48 @@
             <img src="{$webappcontext}/themes/Warwick/images/preview-content-package.png" />
         </a>
     </xsl:template>
+    
+    <!-- START CG - 06/10/09 Check if URL_BUNDLE exists and display if so -->
+    <xsl:template name="url_bundle">
+	<xsl:if test="/mets:METS/mets:fileSec/mets:fileGrp[@USE='URL_BUNDLE']/mets:file/mets:FLocat/@xlink:title">
+        	<h2><i18n:text>xmlui.dri2xhtml.METS-1.0.item-web-resource-title</i18n:text></h2>
+        	
+        	<xsl:for-each select="/mets:METS/mets:fileSec/mets:fileGrp[@USE='URL_BUNDLE']/mets:file/mets:FLocat">
+        		<p>
+        		<xsl:call-template name="url">
+        			<xsl:with-param name="urlValue" select="@xlink:title"/>
+        			<xsl:with-param name="urlName" select="@xlink:title"/>
+        		</xsl:call-template>
+        		<br/>
+        		</p>
+        	</xsl:for-each>
+        </xsl:if>
+    </xsl:template>  
+    <!-- END CG - 06/10/09 -->
+    
+    <!-- START CG - 06/10/09 If file in bitsteam, display details -->
+    <xsl:template name="bitstream_display">
+	<xsl:if test="(./mets:fileSec/mets:fileGrp[@USE='CONTENT']/mets:file[@GROUPID])">
+
+		        <xsl:apply-templates select="./mets:fileSec/mets:fileGrp[@USE='CONTENT']">
+		            <xsl:with-param name="context" select="."/>
+		            <xsl:with-param name="primaryBitstream" select="./mets:structMap[@TYPE='LOGICAL']/mets:div[@TYPE='DSpace Item']/mets:fptr/@FILEID"/>
+		        </xsl:apply-templates>   
+        
+        </xsl:if>  
+    </xsl:template>  
+    <!-- END CG - 06/10/09 -->
+    
+    
+    
+    <!-- Added by CG - handy snippet to create an html anchor for a url in a URL_BUNDLE-->
+	<xsl:template name="url">
+	<xsl:param name="urlValue"/>
+	<xsl:param name="urlName"/>
+	 		<a 
+	 			href="{$urlValue}" 
+	 			title="{$urlValue}">
+     	    	<xsl:value-of select="$urlName" />          
+     	    </a>
+    </xsl:template>    
 </xsl:stylesheet>

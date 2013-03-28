@@ -71,9 +71,13 @@
         <xsl:param name="first-page" select="/a:manifest/a:resources/a:resource[@identifier=$first-link]/@href"/>
         
         <xsl:for-each select="a:organization">
+           
             <h1>
                 <xsl:value-of select="a:title"/>
             </h1>
+             <!--rtalbot 28/03/13 test if there is more than one item.
+             If there is just one we don't need a menu. may be exceptions but easy enough to change-->
+             <xsl:if test="count(a:item) &gt; 1">
             <ul id="cp-menu">
                 <xsl:for-each select="a:item">
                     <xsl:variable name="x" select="@identifierref"/>
@@ -88,6 +92,7 @@
                     </li>
                 </xsl:for-each>
             </ul>
+            </xsl:if>
         </xsl:for-each>
         <!--rtalbot 13/03/13 The iFrame that displays the current content.
         Putting CSS inline is not great and should probably be moved.

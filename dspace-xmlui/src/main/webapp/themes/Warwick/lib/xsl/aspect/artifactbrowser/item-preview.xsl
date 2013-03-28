@@ -38,7 +38,9 @@
                                                      xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
                                                      xmlns:a="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
                                                      xmlns:http="http://xml.apache.org/cocoon/requestgenerator/2.0" 
-                                                     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink xsl util jstring rights"
+                                                     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink 
+                                                     xsl util jstring rights xi a http imsmd oreatom ore atom
+                                                     "
 >
     
     <xsl:param name="item-id" select="substring-before($request-uri,'previewcp')"/>
@@ -47,8 +49,27 @@
        <!-- rtalbot 13/03/13 these styles may be better in the top level
        stylesheet. They are used to hide page elements not needed in the preview -->
         <style>
-            #ds-options-wrapper {
+            #ds-options-wrapper, #ds-trail, #ds-user-box {
             display:none;
+            }
+            #ds-body {
+            width:100%;
+            }
+            #ds-content{
+            margin-left:auto;
+            margin-right:auto;
+            width:80%;
+            }
+            #cp-menu {
+            /*width:300px;*/
+            display:block;
+            float:left;
+            margin-right:50px;
+            }
+            #viewHolder {
+            width:800px;
+            height:700px; 
+            vertical-align:top;
             }
         </style>
         <!-- rtalbot 13/03/13 include and process the manifest 
@@ -57,7 +78,9 @@
         -->
         <xsl:variable name="manifest-url" select="./mets:fileSec/mets:fileGrp[@USE='METADATA']/mets:file/mets:FLocat[@xlink:title='imsmanifest.xml']/@xlink:href"/>
         <xsl:variable name="man-path" select="concat($base-url,'/bitstream/',$item-id,'imsmanifest.xml')"/>
+        
         <xsl:apply-templates select="document($man-path)/a:manifest/a:organizations"/>
+        
     </xsl:template>
     
     <xsl:template match="a:organizations">
@@ -97,7 +120,7 @@
         <!--rtalbot 13/03/13 The iFrame that displays the current content.
         Putting CSS inline is not great and should probably be moved.
         -->
-        <iframe id="viewHolder" style="position:absolute;left:250px;top:40px;width:800px;height:650px">
+        <iframe id="viewHolder">
             <xsl:attribute name="src">
                 <xsl:value-of select="concat($base-url,'/bitstream/',$item-id,'/', $first-page)"/>
             </xsl:attribute>

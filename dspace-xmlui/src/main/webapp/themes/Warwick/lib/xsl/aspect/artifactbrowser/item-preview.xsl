@@ -25,20 +25,20 @@
     xmlns:dim="http://www.dspace.org/xmlns/dspace/dim"
     xmlns:xlink="http://www.w3.org/TR/xlink/"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-                                                     xmlns:atom="http://www.w3.org/2005/Atom"
-                                                     xmlns:ore="http://www.openarchives.org/ore/terms/"
-                                                     xmlns:oreatom="http://www.openarchives.org/ore/atom/"
-                                                     xmlns="http://www.w3.org/1999/xhtml"
-                                                     xmlns:xalan="http://xml.apache.org/xalan"
-                                                     xmlns:encoder="xalan://java.net.URLEncoder"
-                                                     xmlns:util="org.dspace.app.xmlui.utils.XSLUtils"
-                                                     xmlns:jstring="java.lang.String"
-                                                     xmlns:rights="http://cosimo.stanford.edu/sdr/metsrights/"
-                                                     xmlns:xi="http://www.w3.org/2001/XInclude"
-                                                     xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
-                                                     xmlns:a="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
-                                                     xmlns:http="http://xml.apache.org/cocoon/requestgenerator/2.0" 
-                                                     exclude-result-prefixes="xalan encoder i18n dri mets dim xlink 
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:ore="http://www.openarchives.org/ore/terms/"
+    xmlns:oreatom="http://www.openarchives.org/ore/atom/"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xalan="http://xml.apache.org/xalan"
+    xmlns:encoder="xalan://java.net.URLEncoder"
+    xmlns:util="org.dspace.app.xmlui.utils.XSLUtils"
+    xmlns:jstring="java.lang.String"
+    xmlns:rights="http://cosimo.stanford.edu/sdr/metsrights/"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
+    xmlns:a="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+    xmlns:http="http://xml.apache.org/cocoon/requestgenerator/2.0" 
+    exclude-result-prefixes="xalan encoder i18n dri mets dim xlink 
                                                      xsl util jstring rights xi a http imsmd oreatom ore atom
                                                      "
 >
@@ -64,13 +64,13 @@
             
             #cp-menu {
             /*width:250px;*/
-             width:15%;
-             margin-right:10px;
+            width:15%;
+            margin-right:10px;
             float:left;      
             }
             
-             /* make sure menu links wrap */
-           #cp-menu a {
+            /* make sure menu links wrap */
+            #cp-menu a {
             white-space: pre;           /* CSS 2.0 */
             white-space: pre-wrap;      /* CSS 2.1 */
             white-space: pre-line;      /* CSS 3.0 */
@@ -88,6 +88,18 @@
             vertical-align:top;
             }
         </style>
+        <script type="text/javascript">
+            //unobtrusive jQuery ehancement to add function to links in menu
+            $(document).ready(function(){
+            $("#cp-menu li").bind("click", function(event){
+            event.preventDefault();
+            var newUrl = $(this).find("a").attr("href");
+            $("#viewHolder").attr("src",newUrl);
+  
+            });
+            });
+             
+        </script>
         <!-- rtalbot 13/03/13 include and process the manifest 
         using the @USE=METADATA attribute to detect that there is a manifest. 
         There may be better alternatives
@@ -116,21 +128,21 @@
             </h1>
              <!--rtalbot 28/03/13 test if there is more than one item.
              If there is just one we don't need a menu. may be exceptions but easy enough to change-->
-             <xsl:if test="count(a:item) &gt; 1">
-            <ul id="cp-menu">
-                <xsl:for-each select="a:item">
-                    <xsl:variable name="x" select="@identifierref"/>
-                    <xsl:variable name="url" select="/a:manifest/a:resources/a:resource[@identifier=$x]/@href"/>
-                    <li>
-                        <a>
-                            <xsl:attribute name="href">
-                                <xsl:value-of select="concat($base-url,'/bitstream/handle',$item-id,$url)"/>
-                            </xsl:attribute>
-                            <xsl:value-of select="a:title"/>
-                        </a>
-                    </li>
-                </xsl:for-each>
-            </ul>
+            <xsl:if test="count(a:item) &gt; 1">
+                <ul id="cp-menu">
+                    <xsl:for-each select="a:item">
+                        <xsl:variable name="x" select="@identifierref"/>
+                        <xsl:variable name="url" select="/a:manifest/a:resources/a:resource[@identifier=$x]/@href"/>
+                        <li>
+                            <a>
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="concat($base-url,'/bitstream/handle',$item-id,$url)"/>
+                                </xsl:attribute>
+                                <xsl:value-of select="a:title"/>
+                            </a>
+                        </li>
+                    </xsl:for-each>
+                </ul>
             </xsl:if>
         </xsl:for-each>
         <!--rtalbot 03/04/13 The iFrame that displays the current content.-->

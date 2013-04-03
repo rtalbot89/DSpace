@@ -46,28 +46,44 @@
     <xsl:param name="item-id" select="substring-before($request-uri,'previewcp')"/>
     
     <xsl:template name="cp-preview">
-       <!-- rtalbot 13/03/13 these styles may be better in the top level
-       stylesheet. They are used to hide page elements not needed in the preview -->
+       <!-- rtalbot 03/04/13 these styles are local overrides 
+       to hide page elements not needed in the preview, as well as to define the presentation -->
         <style>
             #ds-options-wrapper, #ds-trail, #ds-user-box {
             display:none;
             }
             #ds-body {
-            width:100%;
+            width:1000px;
+         
             }
             #ds-content{
             margin-left:auto;
             margin-right:auto;
-            width:80%;
+       
             }
+            
             #cp-menu {
-            /*width:300px;*/
-            display:block;
-            float:left;
-            margin-right:50px;
+            /*width:250px;*/
+             width:15%;
+             margin-right:10px;
+            float:left;      
             }
+            
+             /* make sure menu links wrap */
+           #cp-menu a {
+            white-space: pre;           /* CSS 2.0 */
+            white-space: pre-wrap;      /* CSS 2.1 */
+            white-space: pre-line;      /* CSS 3.0 */
+            white-space: -pre-wrap;     /* Opera 4-6 */
+            white-space: -o-pre-wrap;   /* Opera 7 */
+            white-space: -moz-pre-wrap; /* Mozilla */
+            white-space: -hp-pre-wrap;  /* HP Printers */
+            word-wrap: break-word;      /* IE 5+ */
+	
+            }
+            
             #viewHolder {
-            width:800px;
+            width:80%;
             height:700px; 
             vertical-align:top;
             }
@@ -117,9 +133,7 @@
             </ul>
             </xsl:if>
         </xsl:for-each>
-        <!--rtalbot 13/03/13 The iFrame that displays the current content.
-        Putting CSS inline is not great and should probably be moved.
-        -->
+        <!--rtalbot 03/04/13 The iFrame that displays the current content.-->
         <iframe id="viewHolder">
             <xsl:attribute name="src">
                 <xsl:value-of select="concat($base-url,'/bitstream/',$item-id,'/', $first-page)"/>

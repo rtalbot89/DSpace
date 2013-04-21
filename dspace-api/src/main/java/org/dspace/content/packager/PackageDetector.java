@@ -8,8 +8,6 @@
 package org.dspace.content.packager;
 
 import org.dspace.content.Bitstream;
-import org.dspace.content.Bitstream;
-import org.dspace.content.packager.PackageIngester;
 
 /**
  * @author gwaller

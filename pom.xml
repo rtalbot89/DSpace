@@ -446,6 +446,7 @@
             <artifactId>dspace-api</artifactId>
             <version>3.2-SNAPSHOT</version>
          </dependency>
+         
          <dependency>
             <groupId>org.dspace.modules</groupId>
             <artifactId>additions</artifactId>
@@ -535,14 +536,6 @@
             <artifactId>dspace-xmlui</artifactId>
             <version>3.2-SNAPSHOT</version>
             <type>war</type>
-         </dependency>
-         <!-- rtalbot 17/03/13 resolving dependencies for xmlui
-         add on module in Netbeans -->
-         <dependency>
-            <groupId>org.dspace</groupId>
-            <artifactId>dspace-xmlui</artifactId>
-            <version>3.2-SNAPSHOT</version>
-            <scope>provided</scope>
          </dependency>
          <dependency>
             <groupId>org.dspace</groupId>

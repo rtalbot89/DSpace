@@ -15,6 +15,7 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.log4j.Logger;
 import org.dspace.content.Bitstream;
+import org.dspace.content.packager.PackageDetector;
 import org.dspace.content.packager.PackageIngester;
 import org.dspace.content.packager.PackageUtils;
 import org.jdom.Document;

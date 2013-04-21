@@ -17,7 +17,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.rmi.dgc.VMID;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,9 +50,7 @@ import org.jdom.Element;
 
 import uk.ac.jorum.dspace.utils.BundleUtils;
 import uk.ac.jorum.exceptions.CriticalException;
-import uk.ac.jorum.exceptions.NonCriticalException;
 import uk.ac.jorum.licence.LicenceController;
-import uk.ac.jorum.packager.preview.IMSHtmlPreviewGenerator;
 import uk.ac.jorum.utils.ExceptionLogger;
 import uk.ac.jorum.utils.URLChecker;
 
@@ -691,31 +688,6 @@ public class IMSIngester extends BaseXmlIngester {
 	 */
     @Override
 	public void postInstallHook(Context context, Item item){
-
-		// Generate an IMS preview bundle and bitstream
-        //rtalbot 20/03/13 commented out to skip static preview generation
-        /*
-		Bundle previewBundle = null;
-		try{
-                    log.debug("robmessage about to create preview bundle");
-			previewBundle = BundleUtils.getBundleByName(item, Constants.PREVIEW_PACKAGE_BUNDLE);
-			IMSHtmlPreviewGenerator.generatePreviewBitstream(context, item, previewBundle);
-		} catch (Exception e){
-			ExceptionLogger.logException(log, e);
-			
-			// Remove the preview bundle
-			if (previewBundle != null){
-				try{
-					item.removeBundle(previewBundle);
-				} catch (Exception e2){
-					ExceptionLogger.logException(log, e2);
-				}
-			}
-		}
-		
-		// GWaller 16/2/10 IssueID #175 Now ensure the embedded licence is set to the same CC licence store in the CC bundle
-		updateEmbeddedLicence(context, item);
-		*/
 	}
 
 

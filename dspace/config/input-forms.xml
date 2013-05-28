@@ -80,7 +80,7 @@
          <repeatable>false</repeatable>
          <label>Date of Issue</label>
          <input-type>date</input-type>
-         <hint>Please give the date of previous publication or public distribution
+         <hint>If the item was previously officially published, please give the date of previous publication or public distribution
                         below.  You can leave out the day and/or month if they aren't
                         applicable.</hint>
          <required>You must enter at least the year.</required>
@@ -102,9 +102,9 @@
          <dc-element>identifier</dc-element>
          <dc-qualifier>citation</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>Citation</label>
+         <label>Version</label>
          <input-type>onebox</input-type>
-         <hint>Enter the standard citation for the previously issued instance of this item.</hint>
+         <hint>If this is a version of a previous item, please enter the version number.</hint>
          <required></required>
        </field>
 
@@ -113,9 +113,9 @@
          <dc-element>relation</dc-element>
          <dc-qualifier>ispartofseries</dc-qualifier>
          <repeatable>true</repeatable>
-         <label>Series/Report No.</label>
+         <label>Series No.</label>
          <input-type>series</input-type>
-         <hint>Enter the series and number assigned to this item by your community.</hint>
+         <hint>If part of a series, enter the series and number assigned to this item by your community.</hint>
          <required></required>
        </field>
 
@@ -174,9 +174,9 @@ it, please enter the types and the actual numbers or codes below.</hint>
          <dc-element>description</dc-element>
          <dc-qualifier>abstract</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>Abstract</label>
+         <label>Summary</label>
          <input-type>textarea</input-type>
-         <hint>Enter the abstract of the item below. </hint>
+         <hint>Enter a summary of the item below. </hint>
          <required></required>
        </field>
 

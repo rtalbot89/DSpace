@@ -324,7 +324,7 @@
                         <xsl:text>/</xsl:text>
                     </xsl:attribute>
                     <span id="ds-header-logo">&#160;</span>
-                    <span id="ds-header-logo-text">Lorepo</span>
+                    <span id="ds-header-logo-text">Ward</span>
                 </a>
                 <h1 class="pagetitle visuallyhidden">
                     <xsl:choose>

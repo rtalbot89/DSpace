@@ -150,8 +150,8 @@
 				</map:match>
 
 				<!-- Step 3: Transform to XHTML -->
-				<map:transform src="{global:theme-name}.xsl"/>
-			    <!-- <map:transform src="Warwick.xsl"/> -->
+				<!--<map:transform src="{global:theme-name}.xsl"/>-->
+			    <map:transform src="Warwick.xsl"/>
 
 				<!-- Step 4: Localize the page -->
 				<map:act type="locale">

@@ -246,21 +246,6 @@
                 </field>
                 
                 <field>
-                    <!-- dc doesn't have the taxonomy tree of IMS
-                    this is probably the nearest mapping to LOM 9.4
-                    or imsmd:taxonpath -->
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier>classification</dc-qualifier>
-                    <!-- An input-type of twobox MUST be marked as repeatable -->
-                    <repeatable>true</repeatable>
-                    <label>Subject classification</label>
-                    <input-type>twobox</input-type>
-                    <hint>Enter the academic subject area below.</hint>
-                    <required></required>
-                </field>
-                
-                <field>
                     <!-- it was proposed to enable the addition of
                     other types of contributor. However, I can't see
                     a straightforward way of doing this and relating the
@@ -303,7 +288,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>audience</dc-element>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Audience</label>
                     <input-type>onebox</input-type>
                     <hint>The relationship between the item 
@@ -314,7 +299,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>audience</dc-element>
                     <dc-qualifier>educationlevel</dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Education Level</label>
                     <input-type>onebox</input-type>
                     <hint>What level in a course is this item intended for.</hint>
@@ -350,8 +335,19 @@
                 
                 <field>
                     <dc-schema>dc</dc-schema>
-                    <dc-element>rights</dc-element>
-                    <dc-qualifier>holder</dc-qualifier>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>isreferencedby</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>References to this resource</label>
+                    <input-type>twobox</input-type>
+                    <hint>If this resource is referenced elsewhere.</hint>
+                    <required></required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rightsholder</dc-element>
+                    <dc-qualifier></dc-qualifier>
                     <repeatable>false</repeatable>
                     <label>Rights Holder</label>
                     <input-type>onebox</input-type>
@@ -375,7 +371,7 @@
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>relation</dc-element>
-                    <dc-qualifier>ispartofseries</dc-qualifier>
+                    <dc-qualifier>ispartof</dc-qualifier>
                     <repeatable>true</repeatable>
                     <label>Series No.</label>
                     <input-type>series</input-type>
@@ -400,7 +396,7 @@
                     <dc-schema>dc</dc-schema>
                     <dc-element>language</dc-element>
                     <dc-qualifier>iso</dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <repeatable>true</repeatable>
                     <label>Language</label>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
                     <hint>Select the language of the main content of the item.  If the language does not appear in the list below, please select 'Other'.  If the content does not really have a language (for example, if it is a dataset or an image) please select 'N/A'.</hint>
@@ -541,22 +537,28 @@
         <!--05/06/2013 uow common types -->
         <value-pairs value-pairs-name="uow_common_types" dc-term="type">
             <pair>
-                <displayed-value>Animation</displayed-value>
-                <stored-value>Animation</stored-value>
+                <displayed-value>Collection</displayed-value>
+                <stored-value>Collection</stored-value>
             </pair>
             <pair>
-                <displayed-value>Document</displayed-value>
-                <stored-value>Document</stored-value>
+                <displayed-value>Dataset</displayed-value>
+                <stored-value>Dataset</stored-value>
             </pair>
             <pair>
                 <displayed-value>Image</displayed-value>
                 <stored-value>Image</stored-value>
             </pair>
             <pair>
-                <displayed-value>IMS/SCORM content package</displayed-value>
-                <stored-value>IMS/SCORM content package</stored-value>
+                <displayed-value>Interactive Resource</displayed-value>
+                <stored-value>Interactive Resource</stored-value>
+            </pair>
+            
+            <pair>
+                <displayed-value>Moving Image</displayed-value>
+                <stored-value>Moving Image</stored-value>
             </pair>
             <pair>
+                <!-- not a standard DC type but will be needed -->
                 <displayed-value>Presentation</displayed-value>
                 <stored-value>Presentation</stored-value>
             </pair>
@@ -565,20 +567,12 @@
                 <stored-value>Software</stored-value>
             </pair>
             <pair>
-                <displayed-value>Sound recording</displayed-value>
-                <stored-value>Sound recording</stored-value>
+                <displayed-value>Sound</displayed-value>
+                <stored-value>Sound</stored-value>
             </pair>
             <pair>
-                <displayed-value>Video</displayed-value>
-                <stored-value>Video</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Web link</displayed-value>
-                <stored-value>Web link</stored-value>
-            </pair>
-            <pair>
-                <displayed-value>Other</displayed-value>
-                <stored-value>Other</stored-value>
+                <displayed-value>Text</displayed-value>
+                <stored-value>Text</stored-value>
             </pair>
         </value-pairs>
 

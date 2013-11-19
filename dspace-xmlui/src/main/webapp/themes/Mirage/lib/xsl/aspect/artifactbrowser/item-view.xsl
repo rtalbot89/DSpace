@@ -80,7 +80,7 @@
 
 
     <xsl:template match="dim:dim" mode="itemSummaryView-DIM">
-        <div class="item-summary-view-metadata">
+        <div class="item-summary-view-metadata">           
             <xsl:call-template name="itemSummaryView-DIM-fields"/>
         </div>
     </xsl:template>
@@ -282,7 +282,7 @@
                 <xsl:with-param name="phase" select="$otherPhase"/>
               </xsl:call-template>
           </xsl:when>
-
+          
           <xsl:when test="$clause = 7 and $ds_item_view_toggle_url != ''">
               <p class="ds-paragraph item-view-toggle item-view-toggle-bottom">
                   <a>

@@ -97,6 +97,9 @@ public abstract class AbstractMETSIngester extends AbstractPackageIngester
 {
     /** log4j category */
     private static Logger log = Logger.getLogger(AbstractMETSIngester.class);
+      /** Filename of manifest, relative to package toplevel. */
+    public static final String MANIFEST_FILE = "mets.xml";
+
 
     /**
      * An instance of ZipMdrefManager holds the state needed to retrieve the

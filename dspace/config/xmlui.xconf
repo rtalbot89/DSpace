@@ -82,7 +82,8 @@
         <!-- Base DSpace XMLUI Aspects for Display, Browse, Search, Admin, Login and Submission -->
         <aspect name="Displaying Artifacts" path="resource://aspects/ViewArtifacts/" />
         <aspect name="Browsing Artifacts" path="resource://aspects/BrowseArtifacts/" />
-        <aspect name="Searching Artifacts" path="resource://aspects/SearchArtifacts/" />
+        <!-- rtalbot 25/03/13 commented out to use 'discovery' instead Manual p.271 -->
+        <!--<aspect name="Searching Artifacts" path="resource://aspects/SearchArtifacts/" />-->
         <aspect name="Administration" path="resource://aspects/Administrative/" />
         <aspect name="E-Person" path="resource://aspects/EPerson/" />
         <aspect name="Submission and Workflow" path="resource://aspects/Submission/" />
@@ -122,7 +123,8 @@
             (in the "Basic Features/Aspects" group) as leaving it on together
             with Discovery will cause UI overlap issues
         -->
-        <!-- <aspect name="Discovery" path="resource://aspects/Discovery/" /> -->
+         <!-- rtalbot 25/03/13 uncommented to use 'discovery' Manual p.271 -->
+        <aspect name="Discovery" path="resource://aspects/Discovery/" />
 
         <!-- ==============
              SWORDv1 Client
@@ -172,7 +174,10 @@
         <!-- <theme name="Test Theme 2" regex="community-list" path="theme2/"/> -->
 
         <!-- Mirage theme, @mire contributed theme, default since DSpace 3.0 -->
-        <theme name="Atmire Mirage Theme" regex=".*" path="Mirage/" />
+         <!--<theme name="Atmire Mirage Theme" regex=".*" path="Mirage/" /> -->
+        
+        <!-- rtalbot 16/03/13 Warwick theme. Modified Mirage theme -->
+        <theme name="Warwick Theme" regex=".*" path="Warwick/" />
 
         <!-- Reference theme, the default Manakin XMLUI layout up to DSpace 1.8 -->
         <!-- <theme name="Default Reference Theme" regex=".*" path="Reference/" /> -->

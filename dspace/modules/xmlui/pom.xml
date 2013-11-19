@@ -116,11 +116,11 @@
 
       <!-- DSpace XMLUI API -->
       <dependency>
-         <groupId>org.dspace</groupId>
-         <artifactId>dspace-xmlui</artifactId>
+            <groupId>org.dspace</groupId>
+            <artifactId>dspace-xmlui</artifactId>
          <type>jar</type>
          <classifier>classes</classifier>
-      </dependency>
+         </dependency>
 
       <dependency>
          <groupId>javax.servlet</groupId>

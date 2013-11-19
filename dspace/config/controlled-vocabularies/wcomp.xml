@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node id="warwickcomputing" label="Warwick Computing">
+    <isComposedBy>
+        <node id="A" label="General Languages">
+            <isComposedBy>
+                <node id="A1" label="Java"/>
+                <node id="A2" label="C"/>
+                <node id="A3" label="C++"/>
+                <node id="A4" label="C#"/>
+                <node id="A5" label="Perl"/>
+                <node id="A6" label="Python"/>
+            </isComposedBy>
+            </node>
+         <node id="B" label="declarative languages">
+             <isComposedBy>
+                  <node id="B1" label="XML"/>
+                   <node id="B2" label="HTML"/>
+                   <node id="B3" label="XSLT"/>
+             </isComposedBy>
+          </node>   
+    </isComposedBy>
+</node>

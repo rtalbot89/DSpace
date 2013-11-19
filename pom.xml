@@ -447,6 +447,7 @@
             <artifactId>dspace-api</artifactId>
             <version>3.3-SNAPSHOT</version>
          </dependency>
+         
          <dependency>
             <groupId>org.dspace.modules</groupId>
             <artifactId>additions</artifactId>
@@ -1142,8 +1143,8 @@
          <name>Pere Villega</name>
          <email>pere.villega@gmail.com</email>
          <url>http://www.perevillega.com</url>
-         <organization />
-         <organizationUrl />
+         <organization/>
+         <organizationUrl/>
          <roles>
             <role>developer</role>
          </roles>

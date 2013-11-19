@@ -9,7 +9,7 @@ package org.dspace.content;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import org.apache.log4j.Logger;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
@@ -18,6 +18,10 @@ import org.dspace.event.Event;
 import org.dspace.identifier.IdentifierException;
 import org.dspace.identifier.IdentifierService;
 import org.dspace.utils.DSpace;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
+import uk.ac.jorum.utils.ExceptionLogger;
+
 
 /**
  * Support to install an Item in the archive.
@@ -27,6 +31,9 @@ import org.dspace.utils.DSpace;
  */
 public class InstallItem
 {
+	/** log4j category */
+	private static Logger log = Logger.getLogger(InstallItem.class);
+	
     /**
      * Take an InProgressSubmission and turn it into a fully-archived Item,
      * creating a new Handle.
@@ -186,6 +193,7 @@ public class InstallItem
     private static Item finishItem(Context c, Item item, InProgressSubmission is)
         throws SQLException, IOException, AuthorizeException
     {
+        log.debug("robmessage in finish item");
         // create collection2item mapping
         is.getCollection().addItem(item);
 
@@ -210,6 +218,22 @@ public class InstallItem
         // remove in-progress submission
         is.deleteWrapper();
 
+        
+        // GWaller 9/11/09 IssueID #73 Call post install hook which will generate preview page for content packages
+        // NOTE: this must be called before 'inheritCollectionDefaultPolicies' so that the user still has privs to create the preview bundle!
+        try{
+        	item.postInstallHook(c);
+        } catch (NonCriticalException e){
+        	ExceptionLogger.logException(log, e);
+        } catch (CriticalException e){
+        	ExceptionLogger.logException(log, e);
+        	
+        	// Action must be taken - we received a critical error.
+        	// As the item is already installed at this point, it should be withdrawn so a user cannot see it.
+        	// This must be taken as the item coudl be in an invalid state and should be corrected before making it live again.
+        	item.withdraw();
+        }
+        
         // remove the item's policies and replace them with
         // the defaults from the collection
         item.inheritCollectionDefaultPolicies(is.getCollection());

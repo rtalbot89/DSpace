@@ -8,6 +8,7 @@
 package org.dspace.content.packager;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 
 import org.jdom.Element;
@@ -22,10 +23,13 @@ import org.dspace.content.Item;
 import org.dspace.content.MetadataField;
 import org.dspace.content.MetadataSchema;
 import org.dspace.content.NonUniqueMetadataException;
+import org.dspace.content.WorkspaceItem;
 import org.dspace.content.crosswalk.CrosswalkException;
 import org.dspace.content.crosswalk.MetadataValidationException;
 import org.dspace.core.Context;
 import org.dspace.core.Constants;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
 
 /**
  * Subclass of the METS packager framework to ingest a DSpace
@@ -401,6 +405,28 @@ public class DSpaceAIPIngester
                 "\n\n" +
                 "* dmd=[dmdSecType]      " +
                    "Type of the METS <dmdSec> which should be used to restore item metadata (defaults to DIM, then MODS)";
+    }
+
+    @Override
+    public void postInstallHook(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public boolean updateLicenceInfoInManifest(Context context, Item item, Bitstream bitstreamContainingManifest, InputStream manifestStream, boolean backupBitstream, String licenceUrl, String licenceName) throws SQLException, IOException, AuthorizeException, MetadataValidationException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateEmbeddedLicence(Context context, Item item) throws NonCriticalException, CriticalException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+   
+
+    @Override
+    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream in, PackageParameters params, String license) throws PackageException, CrosswalkException, AuthorizeException, SQLException, IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

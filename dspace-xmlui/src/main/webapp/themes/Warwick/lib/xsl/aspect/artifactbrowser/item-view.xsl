@@ -616,7 +616,7 @@
         <xsl:variable name="webappcontext" select="substring-before($man-url, '/bitstream/')"/>
         <a>
             <xsl:attribute name="href">
-                <xsl:value-of select="concat($webappcontext,'/',$request-uri,'/previewcp')"/>
+                <xsl:value-of select="$man-url"/>
             </xsl:attribute>
             <xsl:attribute name="target">_blank</xsl:attribute>
             <xsl:attribute name="id">
@@ -626,6 +626,25 @@
             probably use something other that Jorum's anyway -->
             <img src="{$webappcontext}/themes/Warwick/images/preview-content-package.png" />
         </a>
+        <xsl:element name="div">
+            <xsl:attribute name="id">dialog-modal</xsl:attribute>
+            <xsl:attribute name="title">Learning Object Preview</xsl:attribute>
+            <xsl:attribute name="style">display:none</xsl:attribute>
+            <xsl:element name="div">
+                <xsl:attribute name="class">cp-menu</xsl:attribute>
+                 <xsl:comment/>
+            </xsl:element>
+            <xsl:element name="iframe">
+                <xsl:attribute name="id">viewHolder</xsl:attribute>
+                 <xsl:comment/>
+            </xsl:element>
+        </xsl:element>
+        <!--
+        <div id="dialog-modal" title="Learning Object Preview" style="display:none;">
+            <iframe src="http://www.w3schools.com" id="viewHolder">
+                <text></text>
+            </iframe>
+        </div>-->
     </xsl:template>
     
     <!-- START CG - 06/10/09 Check if URL_BUNDLE exists and display if so -->

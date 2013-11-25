@@ -614,6 +614,12 @@
     <xsl:template name = "cp-preview-link">
         <xsl:param name="man-url"/>
         <xsl:variable name="webappcontext" select="substring-before($man-url, '/bitstream/')"/>
+        <xsl:element name="button">
+            <xsl:attribute name="id">cp-preview</xsl:attribute>
+            <xsl:attribute name="data-href"><xsl:value-of select="$man-url"/></xsl:attribute>
+            Preview content package
+        </xsl:element>
+        <!--
         <a>
             <xsl:attribute name="href">
                 <xsl:value-of select="$man-url"/>
@@ -622,10 +628,9 @@
             <xsl:attribute name="id">
                 <xsl:text>cp-preview</xsl:text>
             </xsl:attribute>
-            <!-- rtalbot 13/03/13 dodgy use of link to graphic below
-            probably use something other that Jorum's anyway -->
-            <img src="{$webappcontext}/themes/Warwick/images/preview-content-package.png" />
+            Preview content package
         </a>
+       -->
         <xsl:element name="div">
             <xsl:attribute name="id">dialog-modal</xsl:attribute>
             <xsl:attribute name="title">Learning Object Preview</xsl:attribute>

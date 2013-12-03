@@ -1,46 +1,38 @@
 $(document).ready(function(){
-    //test for a cp-preview id
-    if ($("#cp-preview")) {
-        var manUrl = $("#cp-preview").attr("data-href");
-        $("#cp-preview").bind("click", function(){packagePreview(manUrl);});
-        ///
+    //test for a cp-preview link if this is the item view page
+    if ($("#cp-preview").length !== 0) {
+        $("#cp-preview").bind("click", function(){packagePreview($("#cp-preview").attr("data-href"),"modal");});
          $( "#cp-preview" ).button({
       icons: {
         primary: "ui-icon-newwin"
       }});
-        
-        ///
     }
+    //test if it's the full preview page
+     if ($("#cp-preview-full").length !== 0) {
+        packagePreview($("#cp-preview-full").attr("data-href"),"full");
+    } 
 });
 
-function packagePreview(manUrl){
-    event.preventDefault();
+function packagePreview(manUrl, mode){
     //remove anything left over
     $( ".cp-menu > h3" ).remove();
     $( ".cp-menu > ul" ).remove();
     var baseUrl = manUrl.substring(0, manUrl.indexOf('imsmanifest.xml'));
-    //console.log("fired main");
     $.get( manUrl, function( xml ) {
-        console.log("get ran");
         var organizations = $('organization', xml);
         var firstLink = $(organizations).children("item").attr("identifierref");
         var firstPage = baseUrl + $("resource[identifier='"+  firstLink +"']", xml).attr("href");
-        console.log (firstPage);
         var iFrame = $("iframe#viewHolder");
         iFrame.attr("src", firstPage);
-        iFrame.load(function(){
-            console.log("iframeLoad ran");
-                //var contentWidth = $(this).contents().width();
-                //console.log (contentWidth);
-                //$(this).width("800");
-                //var contentHeight = $(this).contents().height();
-                //$(this).height("700");
+        if (mode === 'modal') {
+            iFrame.load(function(){
                 $( "#dialog-modal" ).dialog({
                     width: "auto",
                     height: "auto",
                     modal: true
                 }); 
-        }); 
+            }); 
+        }
         
         $.each(organizations, function(){
             var items = $(this).children('item');

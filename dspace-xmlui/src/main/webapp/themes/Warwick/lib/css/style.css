@@ -1435,3 +1435,9 @@ li.cp-on a {
     padding-top:0px;
     margin-bottom:10px;
 }
+
+#full-cp-view {
+   width: 1100px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}

@@ -43,9 +43,10 @@
                                                      "
 >
     
-    <xsl:param name="item-id" select="substring-before($request-uri,'previewcp')"/>
+    <!--<xsl:param name="item-id" select="substring-before($request-uri,'previewcp')"/>-->
     
     <xsl:template name="cp-preview">
+        <xsl:param name="tp"/>
        <!-- rtalbot 03/04/13 these styles are local overrides 
        to hide page elements not needed in the preview, as well as to define the presentation -->
         <style>
@@ -105,9 +106,12 @@
         There may be better alternatives
         -->
         <xsl:variable name="manifest-url" select="./mets:fileSec/mets:fileGrp[@USE='METADATA']/mets:file/mets:FLocat[@xlink:title='imsmanifest.xml']/@xlink:href"/>
-        <xsl:variable name="man-path" select="concat($base-url,'/bitstream/',$item-id,'imsmanifest.xml')"/>
-        
-        <xsl:apply-templates select="document($man-path)/a:manifest/a:organizations"/>
+        <!--<xsl:variable name="man-path" select="concat($base-url,'/bitstream/',$item-id,'imsmanifest.xml')"/>-->
+        <xsl:element name="p">
+            foo
+            <xsl:value-of select="$manifest-url"/>
+        </xsl:element>
+        <!--<xsl:apply-templates select="document($manifest-url)/a:manifest/a:organizations"/>-->
         
     </xsl:template>
     
@@ -136,7 +140,7 @@
                         <li>
                             <a>
                                 <xsl:attribute name="href">
-                                    <xsl:value-of select="concat($base-url,'/bitstream/handle',$item-id,$url)"/>
+                                    <!--<xsl:value-of select="concat($base-url,'/bitstream/handle',$item-id,$url)"/>-->
                                 </xsl:attribute>
                                 <xsl:value-of select="a:title"/>
                             </a>
@@ -148,7 +152,7 @@
         <!--rtalbot 03/04/13 The iFrame that displays the current content.-->
         <iframe id="viewHolder">
             <xsl:attribute name="src">
-                <xsl:value-of select="concat($base-url,'/bitstream/',$item-id,'/', $first-page)"/>
+               <!-- <xsl:value-of select="concat($base-url,'/bitstream/',$item-id,'/', $first-page)"/>-->
             </xsl:attribute>
         </iframe>
     </xsl:template>

@@ -74,6 +74,30 @@
               <xsl:when test="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='framing'][@qualifier='popup']">
                 <xsl:apply-templates select="dri:body/*"/>
               </xsl:when>
+              <!-- rtalbot 3/12/13 full screen IMS view -->
+              <xsl:when test="contains($queryString,'view=full')">
+                  <xsl:variable name="handle" select="/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='request'][@qualifier='URI']"/>
+                  <xsl:variable name="full-path" select="concat($base-url,'/bitstream/', $handle,'/imsmanifest.xml')"/>
+                  <xsl:element name="span">
+                      <xsl:attribute name="data-href">
+                          <xsl:value-of select="$full-path"/>
+                      </xsl:attribute>
+                      <xsl:attribute name="id">cp-preview-full</xsl:attribute>
+                      <xsl:attribute name="style">display:none</xsl:attribute>
+                      <xsl:comment/>
+                  </xsl:element>
+                  <xsl:element name="div">
+                      <xsl:attribute name="id">full-cp-view</xsl:attribute>
+                  <xsl:element name="div">
+                      <xsl:attribute name="class">cp-menu</xsl:attribute>
+                      <xsl:comment/>
+                  </xsl:element>
+                  <xsl:element name="iframe">
+                      <xsl:attribute name="id">viewHolder</xsl:attribute>
+                 <xsl:comment/>
+                  </xsl:element>
+                  </xsl:element>  
+              </xsl:when>
                   <xsl:otherwise>
                     <div id="ds-main">
                         <!--The header div, complete with title, subtitle and other junk-->

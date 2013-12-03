@@ -619,18 +619,12 @@
             <xsl:attribute name="data-href"><xsl:value-of select="$man-url"/></xsl:attribute>
             Preview content package
         </xsl:element>
-        <!--
-        <a>
-            <xsl:attribute name="href">
-                <xsl:value-of select="$man-url"/>
-            </xsl:attribute>
-            <xsl:attribute name="target">_blank</xsl:attribute>
-            <xsl:attribute name="id">
-                <xsl:text>cp-preview</xsl:text>
-            </xsl:attribute>
-            Preview content package
-        </a>
-       -->
+        <xsl:element name="p">
+        <xsl:element name="a">
+            <xsl:attribute name="href"><xsl:value-of select="concat(/dri:document/dri:meta/dri:pageMeta/dri:metadata[@element='contextPath'],'?view=full')"/></xsl:attribute>
+            <xsl:text>Full screen view</xsl:text>
+        </xsl:element>
+        </xsl:element>
         <xsl:element name="div">
             <xsl:attribute name="id">dialog-modal</xsl:attribute>
             <xsl:attribute name="title">Learning Object Preview</xsl:attribute>
@@ -644,12 +638,6 @@
                  <xsl:comment/>
             </xsl:element>
         </xsl:element>
-        <!--
-        <div id="dialog-modal" title="Learning Object Preview" style="display:none;">
-            <iframe src="http://www.w3schools.com" id="viewHolder">
-                <text></text>
-            </iframe>
-        </div>-->
     </xsl:template>
     
     <!-- START CG - 06/10/09 Check if URL_BUNDLE exists and display if so -->

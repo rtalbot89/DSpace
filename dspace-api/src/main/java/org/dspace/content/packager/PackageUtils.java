@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,11 +37,12 @@ import org.dspace.content.WorkspaceItem;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
-import org.dspace.core.Utils;
+import org.dspace.core.PluginManager;
 import org.dspace.handle.HandleManager;
 import org.dspace.license.CreativeCommons;
 import org.dspace.workflow.WorkflowManager;
 import org.dspace.xmlworkflow.XmlWorkflowManager;
+import uk.ac.jorum.utils.ExceptionLogger;
 
 /**
  * Container class for code that is useful to many packagers.
@@ -54,6 +56,36 @@ public class PackageUtils
 
     /** log4j category */
     private static final Logger log = Logger.getLogger(PackageUtils.class);
+    public static Vector<Class<? extends PackageDetector>> detectorClasses;
+    
+    static {
+		/** Vector holding all the package detector classes supported - each should extend from org.dspace.content.packager.PackageIngester*/
+		detectorClasses = new Vector<Class<? extends PackageDetector>>(2);
+		
+		
+		// Should read the package detector classes from the DSpace config (this would set order)
+		
+		String[] detectorClassNames = PluginManager.getPluginSequenceClasses(PackageDetector.class);
+		
+		// Note Scorm detector should appear before IMS as a SCORM package is still an IMS package
+		for (String detectorClassName: detectorClassNames){
+			try{
+				detectorClasses.add((Class<? extends PackageDetector>)Class.forName(detectorClassName));
+			} catch (ClassNotFoundException e){
+				ExceptionLogger.logException(log, e);
+			}
+		}
+		
+		
+	}
+	
+	
+    /**
+	 * @return the detectorClasses
+	 */
+	public static Vector<Class<? extends PackageDetector>> getDetectorClasses() {
+		return detectorClasses;
+	}
 
     // Map of metadata elements for Communities and Collections
     // Format is alternating key/value in a straight array; use this
@@ -952,5 +984,46 @@ public class PackageUtils
             throw new PackageException("Database error while attempting to translate group name ('" + groupName + "') for import.", sqle);
         }
     }
+// START GWaller 9/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
+ 	public static PackageIngester getPackageIngester(Item item) throws SQLException{
+ 		PackageIngester result = null;
+ 		
+ 		Bundle[] archivedBundles = item.getBundles(Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE);
+ 		if (archivedBundles.length > 0){
+ 			// Use the first bundle - does it make sense to have more than one archived?
+ 			// Use the first bitstream - should only be one!
+ 			Bitstream[] streams = archivedBundles[0].getBitstreams();
+ 			
+ 			try{
+ 				if (streams.length != 1){
+ 					// throw an exception - there should be one!
+ 					throw new Exception("Expected one bitstream in " + Constants.ARCHIVED_CONTENT_PACKAGE_BUNDLE + " but got " + streams.length + ". Item handle = " + item.getHandle());
+ 				}
+ 				for (Class<? extends PackageDetector> detector: detectorClasses){
+ 					
+ 						PackageDetector detectorInst = detector.newInstance();
+ 						detectorInst.setBitstream(streams[0]); // need to set the stream the detector should look at
+ 						
+ 						// Check to see if we have a package this detector supports
+ 						if (detectorInst.isValidPackage()){
+ 							// We found the right ingester - return it
+ 							Class<? extends PackageIngester> ingesterClass = detectorInst.ingesterClass();
+ 							
+ 							// Create an ingester instance and call ingest
+ 							log.debug("Instantiating ingester: " + ingesterClass.getCanonicalName());
+ 							PackageIngester ingester = ingesterClass.newInstance();
+ 							
+ 							result = ingester;
+ 							break;
+ 						}
+ 				}
+ 			} catch (Exception e){
+ 				ExceptionLogger.logException(log, e);
+ 			}
 
+ 		}
+ 		
+ 		return result;
+ 	}
+ 	// END GWaller 9/11/09 IssueID #73 Added post install hook method which is called after the item is installed 
 }

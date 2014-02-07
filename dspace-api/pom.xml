@@ -517,6 +517,12 @@
 	    	<artifactId>backport-util-concurrent</artifactId>
 	    	<version>3.1</version>
 		</dependency>
+        <dependency>
+            <groupId>eu.medsea.mimeutil</groupId>
+            <artifactId>mime-util</artifactId>
+            <version>2.1.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
 </project>

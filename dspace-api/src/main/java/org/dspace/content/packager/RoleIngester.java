@@ -19,10 +19,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.codec.DecoderException;
 
 import org.dspace.authorize.AuthorizeException;
+import org.dspace.content.Bitstream;
 import org.dspace.content.Collection;
 import org.dspace.content.Community;
 import org.dspace.content.DSpaceObject;
+import org.dspace.content.Item;
+import org.dspace.content.WorkspaceItem;
 import org.dspace.content.crosswalk.CrosswalkException;
+import org.dspace.content.crosswalk.MetadataValidationException;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.eperson.EPerson;
@@ -32,6 +36,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
+import uk.ac.jorum.exceptions.CriticalException;
+import uk.ac.jorum.exceptions.NonCriticalException;
 
 /**
  * Create EPersons and Groups from a file of external representations.
@@ -541,5 +547,27 @@ public class RoleIngester implements PackageIngester
     public String getParameterHelp()
     {
         return "No additional options available.";
+    }
+
+    @Override
+    public void postInstallHook(Context context, Item item)  {
+        throw new UnsupportedOperationException("Not supported yet.");
+}
+
+    @Override
+    public boolean updateLicenceInfoInManifest(Context context, Item item, Bitstream bitstreamContainingManifest, InputStream manifestStream, boolean backupBitstream, String licenceUrl, String licenceName) throws SQLException, IOException, AuthorizeException, MetadataValidationException{
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void updateEmbeddedLicence(Context context, Item item) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+   
+
+    @Override
+    public WorkspaceItem ingest(Context context, Collection[] collections, InputStream in, PackageParameters params, String license) throws PackageException, CrosswalkException, AuthorizeException, SQLException, IOException {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -17,7 +17,7 @@
  <!-- which does not appear in this map will be associated with the mapping-->
  <!-- for handle "default".                                                -->
  <submission-map>
-   <name-map collection-handle="default" submission-name="traditional" />
+   <name-map collection-handle="default" submission-name="jorum" />
  </submission-map>
 
 
@@ -270,6 +270,80 @@
 
 
      
+   </submission-process>
+   <!-- rtalbot 18/12/13 jorum based submission process. First step is to choose between
+   a file and a URL -->
+   <submission-process name="jorum">
+       
+       <!--Step 1 - ask to choose between file and url upload-->
+       <step>
+         <heading>submit.progressbar.initial-questions</heading>
+         <processing-class>org.dspace.submit.step.jorum.UploadChoiceStep</processing-class>
+         <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.jorum.UploadChoiceStep</xmlui-binding>
+         <workflow-editable>true</workflow-editable>
+       </step>
+       
+       <!--If you disable the initial questions step you should insert the -->
+       <!--SkipInitialQuestionsStep below, to enable proper processing of  -->
+       <!--input-forms configuration                                       -->
+       <!--As the default InitialQuestions step has been changed, this non-visible step is included-->
+       <step>
+         <processing-class>org.dspace.submit.step.SkipInitialQuestionsStep</processing-class>
+       </step>
+       
+       <!--Step 2 will be to Upload the item-->
+       <step>
+         <heading>submit.progressbar.upload</heading>
+         <processing-class>org.dspace.submit.step.jorum.JorumUploadStep</processing-class>
+         <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.jorum.JorumUploadStep</xmlui-binding>
+         <workflow-editable>true</workflow-editable>
+      </step>
+      
+      <step>
+        <processing-class>uk.ac.jorum.submit.step.PackageDetectorStep</processing-class>
+      </step>
+      
+      <!--Step 3 will be to Describe the item.-->
+      <step>
+        <heading>submit.progressbar.describe</heading>
+        <processing-class>org.dspace.submit.step.DescribeStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPDescribeStep</jspui-binding>
+	<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.DescribeStep</xmlui-binding>
+        <workflow-editable>true</workflow-editable>
+      </step>
+ 
+      <!--Step 4 will be to select a Creative Commons License-->
+      <!-- Uncomment this step to allow the user to select a Creative Commons license -->
+       
+      <step>
+        <heading>submit.progressbar.CClicense</heading>
+        <processing-class>org.dspace.submit.step.CCLicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPCCLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.CCLicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+      <!--Step 5 will be to Sign off on the License-->
+      <step>
+        <heading>submit.progressbar.license</heading>
+        <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+
+     
+      <!--Step 5 will be to Sign off on the License-->
+      <!--
+      <step>
+        <heading>submit.progressbar.license</heading>
+        <headingCC>submit.progressbar.license.cc</headingCC>
+        <headingTerms>submit.progressbar.license.terms</headingTerms>
+        <processing-class>org.dspace.submit.step.jorum.JorumLicenseStep</processing-class>
+        <jspui-binding>org.dspace.app.webui.submit.step.JSPLicenseStep</jspui-binding>
+		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.jorum.JorumLicenseStep</xmlui-binding>
+		<workflow-editable>false</workflow-editable>
+      </step>
+     -->
    </submission-process>
 
  </submission-definitions>

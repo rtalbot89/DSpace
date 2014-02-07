@@ -24,10 +24,10 @@
 		-->
 
 	<!-- General keys -->
-	<message key="xmlui.general.dspace_home">DSpace Home</message>
+	<message key="xmlui.general.dspace_home">Ward Home</message>
 	<message key="xmlui.general.search">Search</message>
 	<message key="xmlui.general.go">Go</message>
-	<message key="xmlui.general.go_home">Go to DSpace home</message>
+	<message key="xmlui.general.go_home">Go to Ward home</message>
 	<message key="xmlui.general.save">Save</message>
 	<message key="xmlui.general.cancel">Cancel</message>
 	<message key="xmlui.general.return">Return</message>
@@ -60,7 +60,7 @@
 	<!--
 		This section is for feed syndications (RSS, atom, etc)
 	-->
-	<message key="xmlui.feed.general_description">The DSpace digital repository system captures, stores, indexes, preserves, and distributes digital research material.</message>
+	<message key="xmlui.feed.general_description">The Ward digital repository system captures, stores, indexes, preserves, and distributes digital research material.</message>
     <message key="xmlui.feed.header">RSS Feeds</message>
 	<message key="xmlui.feed.logo_title">The Channel Image</message>
 	<message key="xmlui.feed.untitled">Untitled</message>
@@ -92,7 +92,7 @@
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.head2">Communities or Collections matching your query</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.head3">Items matching your query</message>
 	<message key="xmlui.ArtifactBrowser.AbstractSearch.no_results">Search produced no results.</message>
-	<message key="xmlui.ArtifactBrowser.AbstractSearch.all_of_dspace">All of DSpace</message>
+	<message key="xmlui.ArtifactBrowser.AbstractSearch.all_of_dspace">All of Ward</message>
 
    <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.title">title</message>
    <message key="xmlui.ArtifactBrowser.AbstractSearch.sort_by.dateissued">issue date</message>
@@ -184,7 +184,7 @@
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.CollectionViewer.java -->
 	<message key="xmlui.ArtifactBrowser.CollectionViewer.search_scope">Search Scope</message>
-	<message key="xmlui.ArtifactBrowser.CollectionViewer.all_of_dspace">All of DSpace</message>
+	<message key="xmlui.ArtifactBrowser.CollectionViewer.all_of_dspace">All of Ward</message>
 	<message key="xmlui.ArtifactBrowser.CollectionViewer.full_text_search">Search within this collection:</message>
 	<message key="xmlui.ArtifactBrowser.CollectionViewer.head_browse">Browse by</message>
 	<message key="xmlui.ArtifactBrowser.CollectionViewer.browse_titles">Titles</message>
@@ -196,12 +196,12 @@
 	<!-- org.dspace.app.xmlui.artifactbrowser.CommunityBrowser.java -->
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.title">Community List</message>
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.trail">Community List</message>
-	<message key="xmlui.ArtifactBrowser.CommunityBrowser.head">Communities in DSpace</message>
+	<message key="xmlui.ArtifactBrowser.CommunityBrowser.head">Communities in Ward</message>
 	<message key="xmlui.ArtifactBrowser.CommunityBrowser.select">Select a community to browse its collections.</message>
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.CommunityViewer.java -->
 	<message key="xmlui.ArtifactBrowser.CommunityViewer.search_scope">Search Scope</message>
-	<message key="xmlui.ArtifactBrowser.CommunityViewer.all_of_dspace">All of DSpace</message>
+	<message key="xmlui.ArtifactBrowser.CommunityViewer.all_of_dspace">All of Ward</message>
 	<message key="xmlui.ArtifactBrowser.CommunityViewer.full_text_search">Search within this community and its collections:</message>
 	<message key="xmlui.ArtifactBrowser.CommunityViewer.head_browse">Browse by</message>
 	<message key="xmlui.ArtifactBrowser.CommunityViewer.browse_titles">Titles</message>
@@ -226,7 +226,7 @@
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.title">Give feedback</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.trail">Give feedback</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.head">Give feedback</message>
-	<message key="xmlui.ArtifactBrowser.FeedbackForm.para1">Thanks for sharing your feedback about the DSpace system. Your comments are appreciated!</message>
+	<message key="xmlui.ArtifactBrowser.FeedbackForm.para1">Thanks for sharing your feedback about the Ward system. Your comments are appreciated!</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.email">Your Email</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.email_help">This address will be used to follow up on your feedback.</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackForm.comments">Comments</message>
@@ -238,6 +238,10 @@
 	<message key="xmlui.ArtifactBrowser.FeedbackSent.head">Feedback sent</message>
 	<message key="xmlui.ArtifactBrowser.FeedbackSent.para1">Your comments have been received.</message>
 
+	<!-- org.dspace.app.xmlui.artifactbrowser.FrontPageSearch.java -->
+	<message key="xmlui.ArtifactBrowser.FrontPageSearch.head">Search Ward</message>
+	<message key="xmlui.ArtifactBrowser.FrontPageSearch.para1">Enter some text in the box below to search Ward.</message>
+
 	<!-- org.dspace.app.xmlui.artifactbrowser.ItemViewer.java -->
 	<message key="xmlui.ArtifactBrowser.ItemViewer.trail">View Item</message>
 	<message key="xmlui.ArtifactBrowser.ItemViewer.head_parent_collections">This item appears in the following Collection(s)</message>
@@ -248,7 +252,7 @@
 
 	<!-- org.dspace.app.xmlui.artifactbrowser.Navigation.java -->
 	<message key="xmlui.ArtifactBrowser.Navigation.head_browse">Browse</message>
-	<message key="xmlui.ArtifactBrowser.Navigation.head_all_of_dspace">All of DSpace</message>
+	<message key="xmlui.ArtifactBrowser.Navigation.head_all_of_dspace">All of Ward</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.communities_and_collections">Communities &amp; Collections</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_title">Titles</message>
 	<message key="xmlui.ArtifactBrowser.Navigation.browse_author">Authors</message>
@@ -400,7 +404,7 @@
 	<!-- org.dspace.app.xmlui.eperson.CannotRegister.java -->
 	<message key="xmlui.EPerson.CannotRegister.title">Registration unavailable</message>
 	<message key="xmlui.EPerson.CannotRegister.head">Registration unavailable</message>
-	<message key="xmlui.EPerson.CannotRegister.para1">The configuration of this DSpace repository does not allow registration in this context. Please contact the <a href="../contact">site administrator</a> with questions or comments.</message>
+	<message key="xmlui.EPerson.CannotRegister.para1">The configuration of this Ward repository does not allow registration in this context. Please contact the <a href="../contact">site administrator</a> with questions or comments.</message>
 
 	<!-- org.dspace.app.xmlui.eperson.EditProfile.java -->
 	<message key="xmlui.EPerson.EditProfile.title_update">Update Profile</message>
@@ -460,7 +464,7 @@
 	<!-- org.dspace.app.xmlui.eperson.PasswordLogin.java -->
 	<message key="xmlui.EPerson.PasswordLogin.title">Sign in</message>
 	<message key="xmlui.EPerson.PasswordLogin.trail">Sign in</message>
-	<message key="xmlui.EPerson.PasswordLogin.head1">Sign in to DSpace</message>
+	<message key="xmlui.EPerson.PasswordLogin.head1">Sign in to Ward</message>
 	<message key="xmlui.EPerson.PasswordLogin.title">Sign in</message>
 	<message key="xmlui.EPerson.PasswordLogin.email_address">E-Mail Address</message>
 	<message key="xmlui.EPerson.PasswordLogin.error_bad_login">The email address and/or password supplied were not valid.</message>
@@ -514,7 +518,7 @@
 	<!-- org.dspace.app.xmlui.eperson.RegistrationFinished.java -->
 	<message key="xmlui.EPerson.RegistrationFinished.title">Registration finished</message>
 	<message key="xmlui.EPerson.RegistrationFinished.head">Registration Finished</message>
-	<message key="xmlui.EPerson.RegistrationFinished.para1">You're now registered to use the DSpace system.  You can subscribe to collections to receive email updates about new items.</message>
+	<message key="xmlui.EPerson.RegistrationFinished.para1">You're now registered to use the Ward system.  You can subscribe to collections to receive email updates about new items.</message>
 
 	<!-- org.dspace.app.xmlui.eperson.ResetPassword.java -->
 	<message key="xmlui.EPerson.ResetPassword.title">Reset password</message>
@@ -599,7 +603,7 @@
 	<!-- org.dspace.app.xmlui.Submission.submissions -->
 	<message key="xmlui.Submission.Submissions.title">Submissions &amp; Workflow</message>
 	<message key="xmlui.Submission.Submissions.trail">Submissions</message>
-	<message key="xmlui.Submission.Submissions.head">Submissions &amp; Workflow tasks</message>
+	<message key="xmlui.Submission.Submissions.head">Submissions &amp; Workflow Tasks</message>
 	<message key="xmlui.Submission.Submissions.untitled"><i>Untitled</i></message>
 	<message key="xmlui.Submission.Submissions.email">email: </message>
 	<!-- Same transformer, workflow section -->
@@ -703,6 +707,16 @@
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.citation">Citation</message>
 	<message key="xmlui.Submission.submit.InitialQuestionsStep.publisher">Publisher</message>
 
+        <!--***Added by CG****-->
+	<!-- org.dpspace.app.xmlui.Submission.submit.jorum.JorumUploadChoiceStep -->
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.head">Initial Questions</message>
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.radio_label">Please choose whether you would like to upload a file or a weblink</message>
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.radio_help"><!--Some help text can go here--></message>
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.radio_file">File</message>
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.radio_url">Web link</message>
+	<message key="xmlui.Submission.submit.jorum.UploadChoiceStep.add_email">Please visit your <a href="/${dspace.default.webapp}/profile">Profile</a> page and complete your profile before you make your first deposit.</message>
+	<!--*******-->
+
 	<!-- org.dspace.app.xmlui.Submission.submit.DescribeStep -->
 	<message key="xmlui.Submission.submit.DescribeStep.head">Describe Item</message>
 	<message key="xmlui.Submission.submit.DescribeStep.unknown_field">Error: Unknown field type</message>
@@ -790,6 +804,14 @@
 	<message key="xmlui.Submission.submit.UploadStep.checksum">File checksum:</message>
 	<message key="xmlui.Submission.submit.UploadStep.submit_remove">Remove selected files</message>
 
+<!--***Added by CG****-->
+	<!-- org.dspace.app.xmlui.Submission.submit.jorum.JorumUploadStep -->
+	<message key="xmlui.Submission.submit.jorum.JorumUploadStep.head">Upload Resource</message>
+	<message key="xmlui.Submission.submit.jorum.JorumUploadStep.url_label">Web link to save</message>
+	<message key="xmlui.Submission.submit.jorum.JorumUploadStep.url_help"></message>
+	<message key="xmlui.Submission.submit.jorum.JorumUploadStep.url_error">Please provide a web link before proceeding to the next step</message>
+    <message key="xmlui.Submission.submit.jorum.JorumUploadStep.virus_check_failed">File has failed virus checking, if in doubt please contact {0}.</message>
+	<!--*******-->
 
 
     <message key="xmlui.Submission.submit.UploadWithEmbargoStep.head">Upload File(s)</message>
@@ -865,6 +887,33 @@
         <message key="xmlui.Submission.submit.CCLicenseStep.no_license">No Creative Commons License</message>
         <message key="xmlui.Submission.submit.CCLicenseStep.save_changes">You must click Next to save your changes.</message>
 
+	<!--***Added by CG****-->
+	<message key="xmlui.Submission.submit.jorum.JorumCCLicenseStep.decision_error">You must grant a licence to complete your deposit. If you are unable to grant a licence at this time you may save your work and return later or remove the deposit by clicking the 'Save &amp; Exit' button below.</message>
+	<message key="xmlui.Submission.submit.jorum.JorumCCLicenseStep.external_cc_1">Please </message>
+	<message key="xmlui.Submission.submit.jorum.JorumCCLicenseStep.external_cc_2">choose a licence.</message>
+	<message key="xmlui.Submission.submit.CCLicenseStep.info2">Please select a licence for your content. <strong>Licences govern what people who read your work may then do with it.</strong> <!--Further information is available in the <a href="http://www.jorum.ac.uk/docs/pdf/JorumOpenLicensingguide.pdf">Jorum Licensing Guide</a>.--></message>
+	<message key="xmlui.Submission.submit.CCLicenseStep.faultyLicenceMessageUserND"><img src="/${dspace.default.webapp}/themes/Jorum/images/warning_48.png" alt="CC Note"/>By clicking on any of the above links to access this resource from Jorum, you agree to accept and comply with the terms of the relevant Creative Commons licence. Jorum has been advised that the full text of this Creative Commons licence contain errors. Nothwithstanding this, when a user downloads a resource from Jorum that is licensed under this licence, they are asked to agree to honour the licensor's intention. They should not make derivative works.</message>
+<message key="xmlui.Submission.submit.CCLicenseStep.faultyLicenceMessageUserNDNC"><img src="/${dspace.default.webapp}/themes/Jorum/images/warning_48.png" alt="CC Note"/>By clicking on any of the above links to access this resource from Jorum, you agree to accept and comply with the terms of the relevant Creative Commons licence. Jorum has been advised that the full text of this Creative Commons licence contain errors. Nothwithstanding this, when a user downloads a resource from Jorum that is licensed under this licence, they are asked to agree to honour the licensor's intention. They should not make derivative works and should use the content only for non-commercial purposes.
+</message>
+ 	<message key="xmlui.Submission.submit.CCLicenseStep.faultyLicenceMessageDepositor"><a name="ccNote"><img src="/${dspace.default.webapp}/themes/Jorum/images/warning_48.png" alt="CC Note"/></a>Jorum has been advised that the full text of these Creative Commons
+licences contain errors. Nothwithstanding this, when a user
+downloads a resource from Jorum that is licensed under either of
+these licences, they are asked to agree to honour the licensor's
+intention. In either case they should not make derivative works and in
+the case of the 'Attribution-NonCommercial-No Derivative Works' Licence
+they should use the content only for non-commercial purposes.</message>
+	<message key="xmlui.Submission.submit.CCLicenseStep.note">This resource has been shared under a <a href="#ccLicence">specific licence</a>.<br/>By previewing, viewing, or downloading this resource, you agree to follow the terms of the licence (<a href="#ccLicence">view the licence</a>).</message>
+	<message key="xmlui.Submission.submit.CCLicenseStep.head2">Licence Chooser</message>
+	
+	<!--  GWaller 1/12/10  IssueID #539 Addition of a view licence link on the licence selection screen -->
+	<message key="xmlui.Submission.submit.CCLicenseStep.viewLicenceLinkAlt">View This Licence</message>
+	
+	<!--*******-->
+
+	<!--  GWaller 4/11/09  IssueId #108 Added error message to indicate an item was found with an unspported licence -->
+	<message key="xmlui.Submission.submit.jorum.JorumCCLicenseStep.unsupported_licence_warn">An unsupported licence was found in at least one of the resources submitted. All unsupported licences will be replaced with the licence chosen.</message>
+
+        
 	<!-- org.dspace.app.xmlui.Submission.submit.LicenseStep -->
 	<message key="xmlui.Submission.submit.LicenseStep.head">Distribution License</message>
 	<message key="xmlui.Submission.submit.LicenseStep.info1"><strong>There is one last step:</strong> In order for DSpace to reproduce, translate and distribute your submission worldwide, you must agree to the following terms.</message>
@@ -874,6 +923,11 @@
 	<message key="xmlui.Submission.submit.LicenseStep.decision_checkbox">I Grant the License</message>
 	<message key="xmlui.Submission.submit.LicenseStep.decision_error">You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission by clicking the 'Save &amp; Exit' button below.</message>
 
+
+	<!--  GWaller IssueID #546 3/12/10 Jorum hack - licence link on terms checkbox-->
+	<message key="xmlui.Submission.submit.LicenseStep.decision_checkbox_pre">I have read and agree to the <a href="http://www.jorum.ac.uk/termsofservice.html">Terms of Service</a> and the terms of the selected </message>
+	<message key="xmlui.Submission.submit.LicenseStep.decision_checkbox_post">Licence</message>
+        
 	<!-- org.dspace.app.xmlui.Submission.submit.RemovedStep -->
 	<message key="xmlui.Submission.submit.RemovedStep.head">Submission removed</message>
 	<message key="xmlui.Submission.submit.RemovedStep.info1">Your submission has been cancelled, and the incomplete item removed from the system.</message>
@@ -2076,7 +2130,7 @@
 	<message key="xmlui.dri2xhtml.structural.logout">Logout</message>
 	<message key="xmlui.dri2xhtml.structural.login">Login</message>
 
-	<message key="xmlui.dri2xhtml.structural.search">Search DSpace</message>
+	<message key="xmlui.dri2xhtml.structural.search">Search Ward</message>
 	<message key="xmlui.dri2xhtml.structural.search-advanced">Advanced Search</message>
 	<message key="xmlui.dri2xhtml.structural.search-in-community">This Community</message>
 	<message key="xmlui.dri2xhtml.structural.search-in-collection">This Collection</message>
@@ -2110,7 +2164,12 @@
 	<message key="xmlui.dri2xhtml.METS-1.0.item-uri">URI</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-date">Date</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-publisher">Publisher</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.item-subject">Subject</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-subject"><!--Subject-->Keywords</message>
+
+        <!--***Added by CG****-->
+	<message key="xmlui.dri2xhtml.METS-1.0.item-web-resource">Web Resource Address</message>
+	<message key="xmlui.dri2xhtml.METS-1.0.item-web-resource-title">Web Link Resource</message>
+	<!--*******-->
 
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-head">Files in this item</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-files-file">Files</message>

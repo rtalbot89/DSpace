@@ -16,6 +16,7 @@
     <form-map>
         <!--<name-map collection-handle="default" form-name="traditional" />-->
         <name-map collection-handle="default" form-name="uow-library" />
+        <name-map collection-handle="123456789/70" form-name="authority-type" />
     </form-map>
 
 
@@ -415,6 +416,220 @@
             </page>
         </form>
         <!-- 05/06/2013 rtalbot end -->
+
+<!-- 14/02/2014 rtalbot authority file test form -->
+        <form name="authority-type">
+            <page number="1">
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>title</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Titlex</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the title of the item.</hint>
+                    <required>You must enter a title for this item.</required>
+                </field>
+  
+                <field>
+                    <!-- 
+                     Yvonne suggested mapping dc.description to LOM purpose 9.1.
+                     To me this looks wrong as 9.0 is classification i.e. closer
+                     to dc.subject
+                    -->
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>description</dc-element>
+                    <dc-qualifier>abstract</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Enter a summary of the item below.</hint>
+                    <required></required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>subject</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <!-- An input-type of twobox MUST be marked as repeatable -->
+                    <repeatable>true</repeatable>
+                    <label>Keywords</label>
+                    <input-type>twobox</input-type>
+                    <hint>Enter appropriate keywords or phrases below.</hint>
+                    <required></required>
+                    <vocabulary>srsc</vocabulary>
+                </field>
+                
+                <field>
+                    <!-- it was proposed to enable the addition of
+                    other types of contributor. However, I can't see
+                    a straightforward way of doing this and relating the
+                    contributor to the qualifier e.g. technical implementer
+                    -->
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier>author</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Authors</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the names of the authors of this item below.</hint>
+                    <required>You must enter at least one author</required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>contributor</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Contributors</label>
+                    <input-type>name</input-type>
+                    <hint>Enter the names of any contributors to this item below.</hint>
+                    <required></required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>issued</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Date of Issue</label>
+                    <input-type>date</input-type>
+                    <hint>If the item was previously released, please give the date of previous releases
+                        below.  You can leave out the day and/or month if they aren't
+                        applicable.</hint>
+                    <required>You must enter at least the year.</required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>audience</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Audience</label>
+                    <input-type>onebox</input-type>
+                    <hint>The relationship between the item 
+                        and the class of persons for whom the item is intended.</hint>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>audience</dc-element>
+                    <dc-qualifier>educationlevel</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Education Level</label>
+                    <input-type>onebox</input-type>
+                    <hint>What level in a course is this item intended for.</hint>
+                </field>
+                 
+            </page>
+
+            <page number="2">
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>type</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Type</label>
+                    <input-type value-pairs-name="uow_common_types">dropdown</input-type>
+                    <hint>Select the content type(s) of the item. To select more than one value in the list, you may have to hold down the "CTRL" or "Shift" key.</hint>
+                    <required></required>
+                </field>
+                
+                <!-- relation was required e.g. location on a network drive
+                original URL-->
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>references</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Related work</label>
+                    <input-type>twobox</input-type>
+                    <hint>If the item relates to other locations e.g. a network
+                        drive or a URL enter them here.</hint>
+                    <required></required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>isreferencedby</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>References to this resource</label>
+                    <input-type>twobox</input-type>
+                    <hint>If this resource is referenced elsewhere.</hint>
+                    <required></required>
+                </field>
+                
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rightsholder</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Rights Holder</label>
+                    <input-type>onebox</input-type>
+                    <hint>A person or organization owning or managing 
+                        rights over the item. Any relevant documents such
+                        as release forms should be added to this item.</hint>
+                    <required></required>
+                </field>
+
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>rights</dc-element>
+                    <dc-qualifier>accessrights</dc-qualifier>
+                    <repeatable>false</repeatable>
+                    <label>Access Rights</label>
+                    <input-type>onebox</input-type>
+                    <hint>Who is entitled to use this item.</hint>
+                    <required></required>
+                </field>
+
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>relation</dc-element>
+                    <dc-qualifier>ispartof</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Series No.</label>
+                    <input-type>series</input-type>
+                    <hint>If part of a series, enter the series and number assigned to this item.</hint>
+                    <required></required>
+                </field>
+
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier></dc-qualifier>
+                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+                    <repeatable>true</repeatable>
+                    <label>Identifiers</label>
+                    <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
+                    <hint>If the item has any identifiers associated with
+                        it, please enter the types and the actual identifiers.</hint>
+                    <required></required>
+                </field>
+
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>language</dc-element>
+                    <dc-qualifier>iso</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Language</label>
+                    <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
+                    <hint>Select the language of the main content of the item.  If the language does not appear in the list below, please select 'Other'.  If the content does not really have a language (for example, if it is a dataset or an image) please select 'N/A'.</hint>
+                    <required></required>
+                </field>
+           
+                <field>
+                    <dc-schema>dc</dc-schema>
+                    <dc-element>instructionalmethod</dc-element>
+                    <repeatable>false</repeatable>
+                    <label>Instructional method</label>
+                    <input-type>onebox</input-type>
+                    <hint>If relevant, enter the instructional method.</hint>
+                    <required></required>
+                </field>
+            </page>
+        </form>
+        <!-- 14/02/2014 rtalbot end -->
     </form-definitions>
 
 

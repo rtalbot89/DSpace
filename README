@@ -1,6 +1,6 @@
 This is actually a fork of DSpace used to develop a Learning Object repository
 for the University of Warwick.
-The modified DSpace is in the Lorepo branch.
+The modified DSpace is in the WARD-4_x branch.
 A lot of code was borrowed from Jorum-DSpace for Content package ingestion, i.e. IMS/SCORM.
 Unlike Jorum, Content package previews are generated dynamically from the manifests, whereas
 Jorum generates static previews on ingestion.
